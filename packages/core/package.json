@@ -8,14 +8,14 @@
   },
   "devDependencies": {
     "@types/node": "^18.14.0",
-    "sst": "^2.0.32",
+    "sst": "0.0.0-20230221012753",
     "vitest": "^0.28.5"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.272.0",
     "aws-sdk": "^2.1319.0",
     "electrodb": "^2.4.1",
-    "sst": "^2.0.32",
+    "sst": "0.0.0-20230221012753",
     "ulid": "^2.3.0"
   }
 }

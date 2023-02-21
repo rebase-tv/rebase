@@ -6,7 +6,7 @@ export default {
     return {
       name: "rebase",
       region: "us-east-1",
-      profile: "ironbay-dev",
+      profile: process.env.AWS_PROFILE || "ironbay-dev",
     };
   },
   stacks(app) {

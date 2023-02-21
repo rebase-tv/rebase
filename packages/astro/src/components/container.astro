@@ -1,0 +1,14 @@
+---
+export interface Props {
+  class?: string;
+}
+---
+
+<div
+  class:list={{
+    "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8": true,
+    [Astro.props.class || ""]: !!Astro.props.class,
+  }}
+>
+  <slot />
+</div>

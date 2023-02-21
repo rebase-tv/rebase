@@ -7,11 +7,13 @@
     "typecheck": "tsc -noEmit"
   },
   "devDependencies": {
-    "@types/node": "^18.14.0",
     "@types/aws-lambda": "^8.10.110",
+    "@types/node": "^18.14.0",
     "sst": "^2.0.32"
   },
   "dependencies": {
-    "sst": "^2.0.32"
+    "@octokit/rest": "^19.0.7",
+    "sst": "^2.0.32",
+    "undici": "^5.20.0"
   }
 }

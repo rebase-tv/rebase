@@ -1,16 +1,17 @@
 import { SSTConfig } from "sst";
-import { Api, EventBus, Table } from "sst/constructs";
+import { Api, EventBus, Table, Auth } from "sst/constructs";
 
 export default {
   config(_input) {
     return {
       name: "rebase",
       region: "us-east-1",
+      profile: "ironbay-dev",
     };
   },
   stacks(app) {
     app.stack(function Default({ stack }) {
-      const table = new Table(stack, "table", {
+      const table = new Table(stack, "data", {
         fields: {
           pk: "string",
           sk: "string",
@@ -35,6 +36,13 @@ export default {
         },
       });
 
+      const auth = new Auth(stack, "auth", {
+        authenticator: {
+          handler: "packages/functions/src/auth.handler",
+          bind: [table],
+        },
+      });
+
       const bus = new EventBus(stack, "bus");
 
       const api = new Api(stack, "api", {
@@ -50,6 +58,7 @@ export default {
 
       stack.addOutputs({
         ApiEndpoint: api.url,
+        AuthEndpoint: auth.url || "",
       });
     });
   },

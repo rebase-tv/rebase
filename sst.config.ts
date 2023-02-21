@@ -1,5 +1,5 @@
 import { SSTConfig } from "sst";
-import { Api, EventBus, Table, Auth } from "sst/constructs";
+import { AstroSite, Api, EventBus, Table, Auth } from "sst/constructs";
 
 export default {
   config(_input) {
@@ -54,6 +54,11 @@ export default {
         routes: {
           "GET /": "packages/functions/src/lambda.handler",
         },
+      });
+
+      const site = new AstroSite(stack, "site", {
+        bind: [auth],
+        path: "packages/astro",
       });
 
       stack.addOutputs({

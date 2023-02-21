@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.272.0",
+    "@aws-sdk/smithy-client": "^3.272.0",
+    "@aws-sdk/types": "^3.272.0",
     "aws-sdk": "^2.1319.0",
     "electrodb": "^2.4.1",
     "sst": "0.0.0-20230221012753",

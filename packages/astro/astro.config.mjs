@@ -5,8 +5,11 @@ import aws from "astro-sst/lambda";
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
+import image from "@astrojs/image";
+
+// https://astro.build/config
 export default defineConfig({
   output: "server",
   adapter: aws(),
-  integrations: [tailwind()],
+  integrations: [tailwind(), image()]
 });

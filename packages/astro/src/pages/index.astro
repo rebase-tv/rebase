@@ -3,8 +3,9 @@ import Layout from "@layouts/main.astro";
 import Container from "@components/container.astro";
 import Logo from "@components/logo.astro";
 import Message from "@components/message.astro";
-import frame from "@images/phone-frame.svg";
 import { Auth } from "sst/node/auth";
+import { Image } from "@astrojs/image/components";
+import frame from "@images/phone-frame.svg";
 
 const messages = [
   { avatar: "/images/dax.png", handle: "thdxr", message: "too easy" },
@@ -347,7 +348,7 @@ const auth =
                   >
                   </rect>
                 </svg>
-                <img
+                <Image
                   src={frame}
                   alt=""
                   decoding="async"

@@ -35,6 +35,7 @@ export const handler = AuthHandler({
         ? (user = exists)
         : (user = await User.create({
             username: me.data.login,
+            name: me.data.name || undefined,
             email: me.data.email,
             avatar: me.data.avatar_url,
           }));

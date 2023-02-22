@@ -7,13 +7,13 @@ importers:
       '@tsconfig/node16': ^1.0.3
       aws-cdk-lib: 2.62.2
       constructs: 10.1.156
-      sst: 0.0.0-20230221012753
+      sst: 0.0.0-20230222141232
       typescript: ^4.9.5
     devDependencies:
       '@tsconfig/node16': 1.0.3
       aws-cdk-lib: 2.62.2_constructs@10.1.156
       constructs: 10.1.156
-      sst: 0.0.0-20230221012753
+      sst: 0.0.0-20230222141232
       typescript: 4.9.5
 
   packages/astro:
@@ -24,7 +24,7 @@ importers:
       astro-sst: ^2.0.34
       prettier: ^2.8.4
       prettier-plugin-astro: ^0.8.0
-      sst: 0.0.0-20230221012753
+      sst: 0.0.0-20230222141232
       tailwindcss: ^3.0.24
     dependencies:
       '@astrojs/image': 0.15.0_astro@2.0.14
@@ -35,7 +35,7 @@ importers:
       astro-sst: 2.0.34
       prettier: 2.8.4
       prettier-plugin-astro: 0.8.0
-      sst: 0.0.0-20230221012753
+      sst: 0.0.0-20230222141232
 
   packages/core:
     specifiers:
@@ -45,7 +45,7 @@ importers:
       '@types/node': ^18.14.0
       aws-sdk: ^2.1319.0
       electrodb: ^2.4.1
-      sst: 0.0.0-20230221012753
+      sst: 0.0.0-20230222141232
       ulid: ^2.3.0
       vitest: ^0.28.5
     dependencies:
@@ -54,7 +54,7 @@ importers:
       '@aws-sdk/types': 3.272.0
       aws-sdk: 2.1319.0
       electrodb: 2.4.1_gi3rqt2ipsxljafcodfdjlchei
-      sst: 0.0.0-20230221012753
+      sst: 0.0.0-20230222141232
       ulid: 2.3.0
     devDependencies:
       '@types/node': 18.14.0
@@ -65,11 +65,11 @@ importers:
       '@octokit/rest': ^19.0.7
       '@types/aws-lambda': ^8.10.110
       '@types/node': ^18.14.0
-      sst: 0.0.0-20230221012753
+      sst: 0.0.0-20230222141232
       undici: ^5.20.0
     dependencies:
       '@octokit/rest': 19.0.7
-      sst: 0.0.0-20230221012753
+      sst: 0.0.0-20230222141232
       undici: 5.20.0
     devDependencies:
       '@types/aws-lambda': 8.10.110
@@ -7130,8 +7130,8 @@ packages:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
     dev: false
 
-  /sst/0.0.0-20230221012753:
-    resolution: {integrity: sha512-RkK6XXMNZ3XJVCQgPU+0Eonj7CzCG6Gd0MfS1ddM1OoO4BpdV3EoV8lHnxM2rLs0OS9yESIfMgTAK+KbuANbfQ==}
+  /sst/0.0.0-20230222141232:
+    resolution: {integrity: sha512-ygmQKtcrVGA6X1sP1epN6QkyhP+29c7b9wYev3grmDkZfMkc1MU+IvWuCeNVMjNHqHYwStCOMJAw+4YnZl8aCw==}
     hasBin: true
     peerDependencies:
       '@sls-next/lambda-at-edge': ^3.7.0

@@ -27,6 +27,9 @@ const UserEntity = new Entity(
         type: "string",
         required: true,
       },
+      name: {
+        type: "string",
+      },
     },
     indexes: {
       primary: {
@@ -70,6 +73,7 @@ export async function fromEmail(email: string) {
 export async function create(input: {
   email: string;
   avatar: string;
+  name?: string;
   username: string;
 }) {
   const result = await UserEntity.create({

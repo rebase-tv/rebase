@@ -1,14 +1,12 @@
 ---
 // TODO: look up in ddb
-// const u = Astro.url.searchParams.get("u")
-const user = {
-  email: "elmore.adam@gmail.com",
-  name: "Adam Elmore",
-  number: 132,
-  username: "adamdotdev",
-  avatar:
-    "https://pbs.twimg.com/profile_images/1601092206462263297/ygJzZA0N_400x400.jpg",
-  gold: false,
+
+import { User } from "@rebase/core/user";
+
+const u = Astro.url.searchParams.get("u")
+const user = await User.fromID(u)
+if (!user) {
+  return Astro.redirect("/")
 }
 ---
 
@@ -527,10 +525,10 @@ const user = {
       <div
         class="absolute -right-[350px] rotate-90 origin-left flex justify-center items-center font-['Fira_Mono'] font-[300] text-[110px] text-white"
       >
-        <span class="block">#{user.number.toString().padStart(6, "0")}</span>
+        <span class="block">#{user.userID.toString().padStart(6, "0")}</span>
       </div>
       {
-        user.gold && (
+        false && (
           <div class="absolute inset-0 bg-[#936A00] mix-blend-color" />
         )
       }

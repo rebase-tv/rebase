@@ -13,11 +13,7 @@ importers:
       '@tsconfig/node16': 1.0.3
       aws-cdk-lib: 2.62.2_constructs@10.1.156
       constructs: 10.1.156
-<<<<<<< HEAD
-      sst: 0.0.0-20230222141232
-=======
       sst: 0.0.0-20230222194719
->>>>>>> 2e401c2 (Wire up to backend)
       typescript: 4.9.5
 
   packages/astro:
@@ -27,18 +23,12 @@ importers:
       '@aws-sdk/client-dynamodb': ^3.272.0
       astro: ^2.0.12
       astro-sst: ^2.0.34
-<<<<<<< HEAD
       chrome-aws-lambda: ^10.1.0
-      prettier: ^2.8.4
-      prettier-plugin-astro: ^0.8.0
-      puppeteer-core: ^10.1.0
-      sst: 0.0.0-20230222141232
-=======
       electrodb: ^2.4.1
       prettier: ^2.8.4
       prettier-plugin-astro: ^0.8.0
+      puppeteer-core: ^10.1.0
       sst: 0.0.0-20230222194719
->>>>>>> 2e401c2 (Wire up to backend)
       tailwindcss: ^3.0.24
       ulid: ^2.3.0
     dependencies:
@@ -46,12 +36,9 @@ importers:
       '@astrojs/tailwind': 3.0.1_hf2kjfio2dr6w52rh4mpociq2u
       '@aws-sdk/client-dynamodb': 3.276.0
       astro: 2.0.14
-<<<<<<< HEAD
       chrome-aws-lambda: 10.1.0_puppeteer-core@10.4.0
-      puppeteer-core: 10.4.0
-=======
       electrodb: 2.4.1_tcdz5vbknx4efzaqaba66iph3y
->>>>>>> 2e401c2 (Wire up to backend)
+      puppeteer-core: 10.4.0
       tailwindcss: 3.2.7
       ulid: 2.3.0
     devDependencies:
@@ -92,11 +79,7 @@ importers:
       undici: ^5.20.0
     dependencies:
       '@octokit/rest': 19.0.7
-<<<<<<< HEAD
-      sst: 0.0.0-20230222141232
-=======
       sst: 0.0.0-20230222194719
->>>>>>> 2e401c2 (Wire up to backend)
       undici: 5.20.0
     devDependencies:
       '@types/aws-lambda': 8.10.110
@@ -3728,7 +3711,7 @@ packages:
   /axios/0.24.0:
     resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
     dependencies:
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.2_debug@4.3.4
     transitivePeerDependencies:
       - debug
 
@@ -4794,15 +4777,6 @@ packages:
       micromatch: 4.0.5
       pkg-dir: 4.2.0
     dev: false
-
-  /follow-redirects/1.15.2:
-    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
 
   /follow-redirects/1.15.2_debug@4.3.4:
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}

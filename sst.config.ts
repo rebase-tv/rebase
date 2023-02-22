@@ -1,5 +1,6 @@
 import { SSTConfig } from "sst";
 import { AstroSite, Api, EventBus, Table, Auth } from "sst/constructs";
+import { HostedZone } from "aws-cdk-lib/aws-route53";
 
 export default {
   config(_input) {

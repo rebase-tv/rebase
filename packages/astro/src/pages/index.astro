@@ -1,19 +1,19 @@
 ---
-import Layout from "@layouts/main.astro";
-import Container from "@components/container.astro";
-import Logo from "@components/logo.astro";
-import Message from "@components/message.astro";
-import { Auth } from "sst/node/auth";
-import { Image } from "@astrojs/image/components";
-import frame from "@images/phone-frame.svg";
+import Layout from "@layouts/main.astro"
+import Container from "@components/container.astro"
+import Logo from "@components/logo.astro"
+import Message from "@components/message.astro"
+import { Auth } from "sst/node/auth"
+import { Image } from "@astrojs/image/components"
+import frame from "@images/phone-frame.svg"
 
 const messages = [
   { avatar: "/images/dax.png", handle: "thdxr", message: "too easy" },
   { avatar: "/images/trash.png", handle: "trashh_dev", message: "help" },
   {
-    avatar: "/images/ken.png",
-    handle: "ken_wheeler",
-    message: "this game is wild",
+    avatar: "/images/bash.jpg",
+    handle: "sudobunni",
+    message: "eek js question",
   },
   { avatar: "/images/theo.png", handle: "t3dotgg", message: "starts with a p" },
   {
@@ -26,8 +26,8 @@ const messages = [
     handle: "ken_wheeler",
     message: "lol",
   },
-  { avatar: "/images/theo.png", handle: "t3dotgg", message: "PRIME" },
-];
+  { avatar: "/images/bash.jpg", handle: "sudobunni", message: "PRIME" },
+]
 
 const auth =
   Auth.auth.url +
@@ -36,7 +36,7 @@ const auth =
     client_id: "local",
     redirect_uri: "http://localhost:3000/auth/callback",
     response_type: "code",
-  }).toString();
+  }).toString()
 ---
 
 <Layout title="REBASE">

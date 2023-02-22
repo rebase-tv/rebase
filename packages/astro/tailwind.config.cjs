@@ -34,6 +34,7 @@ module.exports = {
         "5xl": "2.5rem",
       },
       colors: {
+        dark: { DEFAULT: "#03030D" },
         navy: { DEFAULT: "#0F0E37" },
         cyan: { DEFAULT: "#00D4FF" },
         pink: { DEFAULT: "#FF00E0" },

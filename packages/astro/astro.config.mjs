@@ -11,5 +11,10 @@ import image from "@astrojs/image";
 export default defineConfig({
   output: "server",
   adapter: aws(),
-  integrations: [tailwind(), image()]
+  vite: {
+    optimizeDeps: {
+      exclude: ["sst"],
+    },
+  },
+  integrations: [tailwind(), image()],
 });

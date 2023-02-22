@@ -2,6 +2,15 @@
 import Layout from "@layouts/main.astro"
 import Container from "@components/container.astro"
 import Logo from "@components/logo.astro"
+import { useUserSession } from  "../data/session"
+import { User } from "@rebase/core/user"
+
+const session = useUserSession(Astro.cookies)
+if (!session) {
+  return Astro.redirect("/")
+}
+
+const user = await User.fromID(session.properties.userID)
 ---
 
 <Layout title="REBASE">
@@ -40,7 +49,7 @@ import Logo from "@components/logo.astro"
       <!--   class="-mx-4 mt-10 flex-auto py-10 px-4 shadow-2xl shadow-gray-900/10 sm:mx-0 sm:flex-none sm:rounded-5xl sm:p-24" -->
       <!-- > -->
       <img
-        src="/images/share.png"
+        src={`/images/share.png?u=${session.properties.userID}`}
         width={1200}
         height={630}
         class="rounded-2xl shadow-2xl shadow-gray-900"

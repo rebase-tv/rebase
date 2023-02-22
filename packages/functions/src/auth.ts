@@ -1,9 +1,10 @@
 import { AuthHandler, GithubAdapter } from "sst/node/auth2";
 import { Octokit } from "@octokit/rest";
-import { User } from "@rebase/core/user";
 import { Config } from "sst/node/config";
+import { User } from "@rebase/core/user";
+import "sst/node/auth2";
 
-declare module "sst/node/auth" {
+declare module "sst/node/auth2" {
   export interface SessionTypes {
     user: {
       userID: string;

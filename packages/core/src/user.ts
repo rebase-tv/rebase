@@ -82,3 +82,10 @@ export async function create(input: {
   }).go();
   return result.data;
 }
+
+export async function fromID(id: string) {
+  const result = await UserEntity.get({
+    userID: id,
+  }).go();
+  return result.data;
+}

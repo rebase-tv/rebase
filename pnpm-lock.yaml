@@ -13,7 +13,7 @@ importers:
       '@tsconfig/node16': 1.0.3
       aws-cdk-lib: 2.62.2_constructs@10.1.156
       constructs: 10.1.156
-      sst: 0.0.0-20230222141232
+      sst: link:../sst/sst/packages/sst/dist
       typescript: 4.9.5
 
   packages/astro:
@@ -69,7 +69,7 @@ importers:
       undici: ^5.20.0
     dependencies:
       '@octokit/rest': 19.0.7
-      sst: 0.0.0-20230222141232
+      sst: link:../../../sst/sst/packages/sst/dist
       undici: 5.20.0
     devDependencies:
       '@types/aws-lambda': 8.10.110

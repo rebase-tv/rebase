@@ -34,12 +34,12 @@ const auth =
   "/authorize?" +
   new URLSearchParams({
     client_id: "local",
-    redirect_uri: "http://localhost:3000/auth/callback",
+    redirect_uri: Astro.url.origin + "/auth/callback",
     response_type: "code",
   }).toString()
 ---
 
-<Layout title="REBASE">
+<Layout>
   <header>
     <nav>
       <Container class="relative z-50 flex justify-between py-8 text-white">

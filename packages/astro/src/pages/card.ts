@@ -14,6 +14,16 @@ export async function get(ctx: APIContext) {
   let result = null
   let browser = null
 
+  await chromium.font(
+    "https://fonts.gstatic.com/s/firamono/v14/N0bX2SlFPv1weGeLZDtgKP7Ss9XZYalI.woff2"
+  )
+  await chromium.font(
+    "https://fonts.gstatic.com/s/firamono/v14/N0bS2SlFPv1weGeLZDto1d3HkPfUS5NBBASF.woff2"
+  )
+  await chromium.font(
+    "https://fonts.gstatic.com/s/firamono/v14/N0bS2SlFPv1weGeLZDtondvHkPfUS5NBBASF.woff2"
+  )
+
   try {
     browser = await chromium.puppeteer.launch({
       args: chromium.args,

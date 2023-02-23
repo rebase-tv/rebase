@@ -9,7 +9,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.110",
     "@types/node": "^18.14.0",
-    "sst": "0.0.0-20230222194719"
+    "sst": "0.0.0-20230223175731"
   },
   "dependencies": {
     "@octokit/rest": "^19.0.7",
@@ -18,7 +18,7 @@
     "imagemin": "^8.0.1",
     "imagemin-pngquant": "^9.0.2",
     "puppeteer-core": "^10.1.0",
-    "sst": "0.0.0-20230222194719",
+    "sst": "0.0.0-20230223175731",
     "undici": "^5.20.0"
   }
 }

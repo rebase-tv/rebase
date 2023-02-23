@@ -9,7 +9,6 @@ export async function get(ctx: APIContext) {
   }
   const result = Session.verify(code)
   if (!result) throw new Error("Invalid code")
-  console.log(result)
   ctx.cookies.set("session", code, {
     maxAge: 60 * 60 * 24 * 30,
     path: "/",

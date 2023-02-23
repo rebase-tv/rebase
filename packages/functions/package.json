@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@octokit/rest": "^19.0.7",
+    "chrome-aws-lambda": "^10.1.0",
+    "puppeteer-core": "^10.1.0",
     "sst": "0.0.0-20230222194719",
     "undici": "^5.20.0"
   }

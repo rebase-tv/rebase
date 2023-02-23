@@ -19,7 +19,7 @@ export const handler = AuthHandler({
   }),
   providers: {
     github: GithubAdapter({
-      scope: "",
+      scope: "read:user user:email",
       clientID: Config.GITHUB_CLIENT_ID,
       clientSecret: Config.GITHUB_CLIENT_SECRET,
     }),
@@ -40,18 +40,21 @@ export const handler = AuthHandler({
     let user: User.Info | undefined = undefined
 
     if (input.provider === "github") {
+      console.log(input.tokenset)
       const o = new Octokit({
         auth: input.tokenset.access_token,
       })
       const me = await o.users.getAuthenticated()
-      if (!me.data.email) throw new Error("No email")
-      const exists = await User.fromEmail(me.data.email)
+      const emails = await o.request("GET /user/emails")
+      const email = emails.data.find((x) => x.primary)?.email
+      if (!email) throw new Error("No email found")
+      const exists = await User.fromEmail(email)
       exists
         ? (user = exists)
         : (user = await User.create({
             username: me.data.login,
             name: me.data.name || undefined,
-            email: me.data.email,
+            email: email,
             avatar: me.data.avatar_url,
             ref: useCookie("ref"),
           }))

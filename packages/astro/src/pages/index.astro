@@ -79,9 +79,11 @@ const auth =
               </span>, and enjoy VIP access to the show!
             </p>
             <div class="mt-8 flex flex-wrap gap-x-4 gap-y-2">
-              <button
+              <a
+                href={auth + "&provider=twitter"}
                 type="button"
-                class="text-white bg-[#0979BE] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 w-full sm:w-auto justify-center"
+                data-element="login"
+                class="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2 w-full sm:w-auto justify-center"
               >
                 <svg
                   class="w-4 h-4 mr-2 -ml-1"
@@ -100,7 +102,7 @@ const auth =
                   </path>
                 </svg>
                 Sign up with Twitter
-              </button>
+              </a>
               <a
                 href={auth + "&provider=github"}
                 type="button"

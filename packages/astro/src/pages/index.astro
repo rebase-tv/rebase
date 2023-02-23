@@ -63,7 +63,7 @@ const auth =
             >
               Coming soon
             </span>
-            <h1 class="mt-3 text-4xl font-black tracking-tight">
+            <h1 class="mt-3 text-4xl font-extrabold tracking-tight">
               <span>A live game show for devs.</span>
               <span class="sm:block text-pink">Win real cash prizes.</span>
             </h1>
@@ -81,7 +81,7 @@ const auth =
             <div class="mt-8 flex flex-wrap gap-x-4 gap-y-2">
               <button
                 type="button"
-                class="text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 w-full sm:w-auto justify-center"
+                class="text-white bg-[#0979BE] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 w-full sm:w-auto justify-center"
               >
                 <svg
                   class="w-4 h-4 mr-2 -ml-1"
@@ -248,6 +248,7 @@ const auth =
                         <div class="absolute top-3 inset-x-0">
                           <img
                             src="/images/adam.png"
+                            alt="Rebase Host"
                             class="mx-auto"
                             width={65}
                             height={65}
@@ -350,9 +351,10 @@ const auth =
                   >
                   </rect>
                 </svg>
-                <Image
+                <img
                   src={frame}
                   alt=""
+                  decoding="async"
                   class="pointer-events-none absolute inset-0 h-full w-full"
                   style={{ color: "transparent" }}
                 />

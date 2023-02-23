@@ -22,14 +22,7 @@ const { title, description, image } = Astro.props
     <link
       as="font"
       crossorigin="anonymous"
-      href="/fonts/Inter-roman.var.woff2"
-      rel="preload"
-      type="font/woff2"
-    />
-    <link
-      as="font"
-      crossorigin="anonymous"
-      href="/fonts/Inter-italic.var.woff2"
+      href="/fonts/inter-var.woff2"
       rel="preload"
       type="font/woff2"
     />
@@ -54,22 +47,16 @@ const { title, description, image } = Astro.props
     />
     <meta property="og:image" content={image || defaultImage} />
 
-    <style>
+    <style is:inline>
       @font-face {
         font-family: "Inter";
         font-weight: 100 900;
         font-display: swap;
         font-style: normal;
-        font-named-instance: "Regular";
-        src: url("/fonts/Inter-roman.var.woff2") format("woff2");
-      }
-      @font-face {
-        font-family: "Inter";
-        font-weight: 100 900;
-        font-display: swap;
-        font-style: italic;
-        font-named-instance: "Italic";
-        src: url("/fonts/Inter-italic.var.woff2") format("woff2");
+        src: url("/fonts/inter-var.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
       }
       @font-face {
         font-family: "Inter Fallback";

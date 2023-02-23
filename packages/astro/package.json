@@ -9,7 +9,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/image": "^0.15.0",
     "@astrojs/tailwind": "^3.0.1",
     "@aws-sdk/client-dynamodb": "^3.272.0",
     "astro": "^2.0.12",

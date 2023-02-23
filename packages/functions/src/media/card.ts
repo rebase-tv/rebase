@@ -17,9 +17,10 @@ export const handler = ApiHandler(async (evt) => {
   let result = null
   let browser = null
 
-  await chromium.font("fonts/FiraMono-Regular.ttf")
-  await chromium.font("fonts/FiraMono-Medium.ttf")
-  await chromium.font("fonts/FiraMono-Bold.ttf")
+  const prefix = process.env.IS_LOCAL ? "" : "/var/task/"
+  await chromium.font(`${prefix}fonts/FiraMono-Regular.ttf`)
+  await chromium.font(`${prefix}fonts/FiraMono-Medium.ttf`)
+  await chromium.font(`${prefix}fonts/FiraMono-Bold.ttf`)
 
   try {
     browser = await chromium.puppeteer.launch({

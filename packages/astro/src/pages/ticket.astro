@@ -18,6 +18,20 @@ const github = user.avatar.includes("githubusercontent.com")
     <meta name="viewport" content="width=1200" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link
+      as="font"
+      crossorigin="anonymous"
+      href="/fonts/Inter-roman.var.woff2"
+      rel="preload"
+      type="font/woff2"
+    />
+    <link
+      as="font"
+      crossorigin="anonymous"
+      href="/fonts/Inter-italic.var.woff2"
+      rel="preload"
+      type="font/woff2"
+    />
     {
       github && (
         <link
@@ -36,7 +50,7 @@ const github = user.avatar.includes("githubusercontent.com")
         />
       )
     }
-    <link crossorigin="anonymous" href={user.avatar} rel="preconnect" />
+    <link rel="preload" as="image" href={user.avatar} />
     <meta content="noindex" name="robots" />
     <title>{title}</title>
   </head>

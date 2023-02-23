@@ -1,7 +1,9 @@
 import chromium from "chrome-aws-lambda"
 import os from "os"
-import { Api, ApiHandler, useDomainName, useQueryParam } from "sst/node/api"
+import { ApiHandler, useDomainName, useQueryParam } from "sst/node/api"
 import { Config } from "sst/node/config"
+import imagemin from "imagemin"
+import imageminPngquant from "imagemin-pngquant"
 
 const realShit = "/usr/bin/google-chrome-stable"
 const weakShit = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -15,15 +17,9 @@ export const handler = ApiHandler(async (evt) => {
   let result = null
   let browser = null
 
-  await chromium.font(
-    "https://fonts.gstatic.com/s/firamono/v14/N0bX2SlFPv1weGeLZDtgKP7Ss9XZYalI.woff2"
-  )
-  await chromium.font(
-    "https://fonts.gstatic.com/s/firamono/v14/N0bS2SlFPv1weGeLZDto1d3HkPfUS5NBBASF.woff2"
-  )
-  await chromium.font(
-    "https://fonts.gstatic.com/s/firamono/v14/N0bS2SlFPv1weGeLZDtondvHkPfUS5NBBASF.woff2"
-  )
+  await chromium.font("fonts/FiraMono-Regular.ttf")
+  await chromium.font("fonts/FiraMono-Medium.ttf")
+  await chromium.font("fonts/FiraMono-Bold.ttf")
 
   try {
     browser = await chromium.puppeteer.launch({
@@ -32,8 +28,8 @@ export const handler = ApiHandler(async (evt) => {
       executablePath: chromium.headless
         ? await chromium.executablePath
         : os.platform() === "linux"
-        ? realShit
-        : weakShit,
+          ? realShit
+          : weakShit,
       headless: true,
       ignoreHTTPSErrors: true,
     })
@@ -44,11 +40,15 @@ export const handler = ApiHandler(async (evt) => {
       (process.env.IS_LOCAL
         ? "http://localhost:3000"
         : "https://" + useDomainName().replace("api.", "")) +
-        "/ticket?u=" +
-        user
+      "/ticket?u=" +
+      user
     )
 
-    result = await page.screenshot()
+    result = (await page.screenshot()) as Buffer
+
+    result = await imagemin.buffer(result, {
+      plugins: [imageminPngquant({ quality: [0.7, 0.8] })],
+    })
   } catch (error) {
     console.error(error)
   } finally {

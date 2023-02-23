@@ -12,9 +12,13 @@ export function Api({ stack }: StackContext) {
           nodejs: {
             // This skips bundling for this dependency and instead just installs it normally
             // Probably needed for the binary dependency
-            install: ["chrome-aws-lambda"],
+            install: ["chrome-aws-lambda", "imagemin", "imagemin-pngquant"],
+            banner: [
+              `import url from "url"`,
+              `const __dirname = url.fileURLToPath(new URL(".", import.meta.url))`,
+            ].join("\n"),
           },
-          copyFiles: [],
+          copyFiles: [{ from: "fonts" }],
         },
       },
     },

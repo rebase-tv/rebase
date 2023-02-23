@@ -19,6 +19,21 @@ const { title, description, image } = Astro.props
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 
+    <link
+      as="font"
+      crossorigin="anonymous"
+      href="/fonts/Inter-roman.var.woff2"
+      rel="preload"
+      type="font/woff2"
+    />
+    <link
+      as="font"
+      crossorigin="anonymous"
+      href="/fonts/Inter-italic.var.woff2"
+      rel="preload"
+      type="font/woff2"
+    />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -43,7 +58,7 @@ const { title, description, image } = Astro.props
       @font-face {
         font-family: "Inter";
         font-weight: 100 900;
-        font-display: block;
+        font-display: swap;
         font-style: normal;
         font-named-instance: "Regular";
         src: url("/fonts/Inter-roman.var.woff2") format("woff2");
@@ -51,10 +66,18 @@ const { title, description, image } = Astro.props
       @font-face {
         font-family: "Inter";
         font-weight: 100 900;
-        font-display: block;
+        font-display: swap;
         font-style: italic;
         font-named-instance: "Italic";
         src: url("/fonts/Inter-italic.var.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Inter Fallback";
+        src: local("Arial");
+        ascent-override: 90%;
+        descent-override: 22.43%;
+        line-gap-override: 0%;
+        size-adjust: 107.64%;
       }
     </style>
   </head>

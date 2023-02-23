@@ -13,7 +13,10 @@
   },
   "dependencies": {
     "@octokit/rest": "^19.0.7",
+    "@types/imagemin": "^8.0.1",
     "chrome-aws-lambda": "^10.1.0",
+    "imagemin": "^8.0.1",
+    "imagemin-pngquant": "^9.0.2",
     "puppeteer-core": "^10.1.0",
     "sst": "0.0.0-20230222194719",
     "undici": "^5.20.0"

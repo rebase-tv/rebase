@@ -553,7 +553,7 @@ const github = user.avatar.includes("githubusercontent.com")
       <div
         class="absolute -right-[350px] rotate-90 origin-left flex justify-center items-center font-['Fira_Mono'] font-[300] text-[110px] text-white"
       >
-        <span class="block">#{user.userID.toString().padStart(6, "0")}</span>
+        <span class="block">#{user.index.toString().padStart(6, "0")}</span>
       </div>
       {false && <div class="absolute inset-0 bg-[#936A00] mix-blend-color" />} }
     </div>

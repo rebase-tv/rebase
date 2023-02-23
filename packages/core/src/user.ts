@@ -23,6 +23,9 @@ const UserEntity = new Entity(
         type: "string",
         required: true,
       },
+      ref: {
+        type: "string",
+      },
       avatar: {
         type: "string",
         required: true,
@@ -55,6 +58,17 @@ const UserEntity = new Entity(
         sk: {
           field: "gsi1sk",
           composite: [],
+        },
+      },
+      byRef: {
+        index: "gsi2",
+        pk: {
+          field: "gsi2pk",
+          composite: ["ref"],
+        },
+        sk: {
+          field: "gsi2sk",
+          composite: ["userID"],
         },
       },
     },
@@ -107,6 +121,7 @@ export async function create(input: {
   avatar: string
   name?: string
   username: string
+  ref?: string
 }): Promise<Info> {
   const last = (await UserIncrement.get({}).go())?.data?.value
   const next = (last ?? 0) + 1
@@ -119,6 +134,7 @@ export async function create(input: {
             Put: UserEntity.create({
               userID: id,
               index: next,
+              ref: input.ref,
               ...input,
             }).params(),
           },

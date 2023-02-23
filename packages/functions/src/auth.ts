@@ -1,14 +1,15 @@
-import { AuthHandler, GithubAdapter } from "sst/node/auth2";
-import { Octokit } from "@octokit/rest";
-import { Config } from "sst/node/config";
-import { User } from "@rebase/core/user";
-import "sst/node/auth2";
+import { AuthHandler, GithubAdapter } from "sst/node/auth2"
+import { Octokit } from "@octokit/rest"
+import { Config } from "sst/node/config"
+import { User } from "@rebase/core/user"
+import "sst/node/auth2"
+import { useCookie, useQueryParam, useResponse } from "sst/node/api"
 
 declare module "sst/node/auth2" {
   export interface SessionTypes {
     user: {
-      userID: string;
-    };
+      userID: string
+    }
   }
 }
 
@@ -23,16 +24,28 @@ export const handler = AuthHandler({
       clientSecret: Config.GITHUB_CLIENT_SECRET,
     }),
   },
+  async onAuthorize() {
+    const ref = useQueryParam("ref")
+    if (ref)
+      useResponse().cookie({
+        key: "ref",
+        value: ref,
+        httpOnly: true,
+        secure: true,
+        maxAge: 60 * 10,
+        sameSite: "None",
+      })
+  },
   async onSuccess(input) {
-    let user: User.Info | undefined = undefined;
+    let user: User.Info | undefined = undefined
 
     if (input.provider === "github") {
       const o = new Octokit({
         auth: input.tokenset.access_token,
-      });
-      const me = await o.users.getAuthenticated();
-      if (!me.data.email) throw new Error("No email");
-      const exists = await User.fromEmail(me.data.email);
+      })
+      const me = await o.users.getAuthenticated()
+      if (!me.data.email) throw new Error("No email")
+      const exists = await User.fromEmail(me.data.email)
       exists
         ? (user = exists)
         : (user = await User.create({
@@ -40,7 +53,8 @@ export const handler = AuthHandler({
             name: me.data.name || undefined,
             email: me.data.email,
             avatar: me.data.avatar_url,
-          }));
+            ref: useCookie("ref"),
+          }))
     }
 
     return {
@@ -48,6 +62,6 @@ export const handler = AuthHandler({
       properties: {
         userID: user!.userID,
       },
-    };
+    }
   },
-});
+})

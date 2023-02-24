@@ -29,8 +29,8 @@ export const handler = ApiHandler(async (evt) => {
       executablePath: chromium.headless
         ? await chromium.executablePath
         : os.platform() === "linux"
-          ? realShit
-          : weakShit,
+        ? realShit
+        : weakShit,
       headless: true,
       ignoreHTTPSErrors: true,
     })
@@ -41,8 +41,8 @@ export const handler = ApiHandler(async (evt) => {
       (process.env.IS_LOCAL
         ? "http://localhost:3000"
         : "https://" + useDomainName().replace("api.", "")) +
-      "/share/ticket?u=" +
-      user
+        "/share/ticket?u=" +
+        user
     )
 
     result = (await page.screenshot()) as Buffer
@@ -64,7 +64,7 @@ export const handler = ApiHandler(async (evt) => {
     body: result?.toString("base64"),
     headers: {
       "content-type": "image/png",
-      "cache-control": "public, max-age=31536000",
+      "cache-control": "public,max-age=0,s-maxage=31536000,must-revalidate",
     },
   }
 })

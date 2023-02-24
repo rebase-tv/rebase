@@ -36,7 +36,7 @@ const auth =
     redirect_uri: Astro.url.origin + "/auth/callback",
     response_type: "code",
   }).toString()
-Astro.response.headers.set("cache-control", "public, max-age=86400")
+Astro.response.headers.set("cache-control", "public,max-age=0,s-maxage=31536000,must-revalidate")
 ---
 
 <Layout>

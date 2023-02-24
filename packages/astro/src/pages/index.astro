@@ -47,6 +47,20 @@ const auth =
             <Logo class="h-10 w-auto" />
           </a>
         </div>
+        <div id="ticket-link" style={{ display: "none" }}>
+          <a
+            href="/ticket"
+            class="flex items-center space-x-2 border rounded-full border-gray-400 text-gray-100 text-sm px-4 py-2 hover:brightness-125 hover:bg-gray-900/80"
+          >
+            <img
+              alt="Your Avatar"
+              class="rounded-full"
+              width={25}
+              height={25}
+            />
+            <span>Your Ticket</span>
+          </a>
+        </div>
       </Container>
     </nav>
   </header>
@@ -501,6 +515,7 @@ const auth =
 </Layout>
 
 <script>
+  import type { Info } from "@rebase/core/user"
   {
     const params = new URLSearchParams(window.location.search)
     const ref = params.get("ref")
@@ -514,6 +529,17 @@ const auth =
       "[data-element=login]"
     ) as unknown as HTMLAnchorElement[]) {
       e.href = e.href + "&ref=" + ref
+    }
+  }
+
+  const response = await fetch("/api/profile")
+  const json = (await response.json()) as Info | undefined
+  if (json && json.username) {
+    const link = document.getElementById("ticket-link")
+    if (link) {
+      link.style.display = "block"
+      const img = link.querySelector("img") as HTMLImageElement
+      img.src = json.avatar
     }
   }
 </script>

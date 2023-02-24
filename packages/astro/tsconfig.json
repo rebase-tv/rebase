@@ -6,7 +6,8 @@
       "@rebase/core/*": ["../core/src/*"],
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
-      "@images/*": ["src/images/*"]
+      "@images/*": ["src/images/*"],
+      "@data/*": ["src/data/*"]
     }
   }
 }

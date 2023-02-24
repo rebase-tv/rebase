@@ -164,3 +164,12 @@ export async function fromID(id: string) {
   }).go()
   return result.data
 }
+
+export async function referrals(id: string) {
+  const result = await UserEntity.query
+    .byRef({
+      ref: id,
+    })
+    .go()
+  return result.data
+}

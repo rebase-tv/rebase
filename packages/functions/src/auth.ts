@@ -1,4 +1,9 @@
-import { AuthHandler, GithubAdapter, OauthAdapter } from "sst/node/auth2"
+import {
+  AuthHandler,
+  GithubAdapter,
+  OauthAdapter,
+  OidcAdapter,
+} from "sst/node/auth2"
 import { Octokit } from "@octokit/rest"
 import { Config } from "sst/node/config"
 import { User } from "@rebase/core/user"
@@ -21,6 +26,13 @@ export const handler = AuthHandler({
     local: "http://localhost",
   }),
   providers: {
+    google: OidcAdapter({
+      scope:
+        "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+      issuer: await Issuer.discover("https://accounts.google.com"),
+      clientID:
+        "43908644348-ficcruqi5btsf2kgt3bjgvqveemh103m.apps.googleusercontent.com",
+    }),
     github: GithubAdapter({
       scope: "read:user user:email",
       clientID: Config.GITHUB_CLIENT_ID,
@@ -88,6 +100,22 @@ export const handler = AuthHandler({
             name: me.data.name || undefined,
             email: email,
             avatar: me.data.profile_image_url!.replace("_normal", "_400x400"),
+            ref: useCookie("ref"),
+          }))
+    }
+
+    if (input.provider === "google") {
+      const claims = input.tokenset.claims()
+      const email = claims.email
+      if (!email) throw new Error("No email found")
+      const exists = await User.fromEmail(email)
+      exists
+        ? (user = exists)
+        : (user = await User.create({
+            username: email.split("@")[0],
+            name: claims.name!,
+            email: email,
+            avatar: claims.picture?.replace("s96-c", "s400-c") || "",
             ref: useCookie("ref"),
           }))
     }

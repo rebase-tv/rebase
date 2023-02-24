@@ -45,7 +45,9 @@ Astro.response.headers.set(
 <Layout>
   <header>
     <nav>
-      <Container class="relative z-50 flex justify-between py-8 text-white">
+      <Container
+        class="relative z-50 flex justify-between items-center py-8 text-white"
+      >
         <div class="relative z-10 flex items-center gap-16">
           <a href="/" aria-label="Home">
             <Logo class="h-10 w-auto" />
@@ -54,7 +56,7 @@ Astro.response.headers.set(
         <div id="ticket-link" style={{ display: "none" }}>
           <a
             href="/ticket"
-            class="flex items-center space-x-2 border rounded-full border-gray-400 text-gray-100 text-sm px-4 py-2 hover:brightness-125 hover:bg-gray-900/80"
+            class="flex items-center space-x-2 border rounded-full border-gray-400 text-gray-100 text-sm px-2 py-1 sm:px-3 hover:brightness-125 hover:bg-gray-900/80"
           >
             <img
               alt="Your Avatar"

@@ -8,7 +8,7 @@ export interface Props {
 const defaultTitle = "Rebase"
 const defaultDescription =
   "A live game show for developers where you can win real cash prizes."
-const defaultImage = "/images/og-image.png"
+const defaultImage = `${Astro.url.origin}/images/og-image.png`
 const { title, description, image } = Astro.props
 ---
 
@@ -60,7 +60,7 @@ const { title, description, image } = Astro.props
       property="og:description"
     />
     <meta property="og:image" content={image || defaultImage} />
-    <meta property="twitter:image" content={image || defaultImage} />
+    <meta property="twitter:image:src" content={image || defaultImage} />
 
     <style is:inline>
       @font-face {

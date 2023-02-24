@@ -15,7 +15,7 @@ const shareUrl = `${Astro.url.origin}/share/${user.userID}`
 ---
 
 <Layout>
-  <main class="flex min-h-full overflow-hidden pt-16 sm:py-28">
+  <main class="flex min-h-full overflow-hidden pt-16 md:py-18">
     <div class="mx-auto flex w-full flex-col px-4 sm:px-6">
       <a href="/" aria-label="Home">
         <Logo class="mx-auto h-10 w-auto" />
@@ -52,26 +52,19 @@ const shareUrl = `${Astro.url.origin}/share/${user.userID}`
         </p>
       </div>
       <div
-        class="mt-12 pb-24 items-center space-y-8 space-y-reverse flex flex-col-reverse md:flex-col md:space-y-8"
+        class="mt-12 pb-24 md:pb-12 items-center space-y-8 space-y-reverse flex flex-col-reverse md:flex-col md:space-y-8"
       >
         <div
           class="[&>*]:shadow-[0_0_40px_-10px_black] [&>*]:shadow-dark [&>*]:rounded-2xl"
         >
           <Ticket vertical animate width={320} class="md:hidden" {user} />
-          <Ticket
-            animate
-            width={600}
-            class="hidden md:block lg:hidden"
-            {user}
-          />
-          <Ticket animate width={800} class="hidden lg:block" {user} />
+          <Ticket animate width={600} class="hidden md:block" {user} />
         </div>
         <ul
           class="text-gray-100 whitespace-nowrap sm:text-xl flex divide-x [&>li]:px-6 [&>li]:md:px-8 items-center"
         >
           <li>
             <a
-              id="tweet"
               class="flex items-center space-x-2 md:space-x-4 hover:bg-cyan hover:text-navy px-3 py-3 md:px-6 md:py-4 rounded-full w-auto"
               aria-label="Copy a URL to your ticket to your clipboard"
               data-share-url={shareUrl}
@@ -147,13 +140,6 @@ const shareUrl = `${Astro.url.origin}/share/${user.userID}`
 </Layout>
 
 <script>
-  const tweetButtons = document.querySelectorAll("#tweet")
-  tweetButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      // do it
-    })
-  })
-
   const copyButtons = document.querySelectorAll("#copy")
   copyButtons.forEach((button) => {
     button.addEventListener("click", (e) => {

@@ -70,11 +70,16 @@ const shareUrl = `${Astro.url.origin}/share/${user.userID}`
           class="text-gray-100 whitespace-nowrap sm:text-xl flex divide-x [&>li]:px-6 [&>li]:md:px-8 items-center"
         >
           <li>
-            <button
+            <a
               id="tweet"
-              class="flex items-center space-x-2 hover:bg-cyan hover:text-navy px-3 py-3 md:px-6 md:py-4 rounded-full w-auto"
+              class="flex items-center space-x-2 md:space-x-4 hover:bg-cyan hover:text-navy px-3 py-3 md:px-6 md:py-4 rounded-full w-auto"
               aria-label="Copy a URL to your ticket to your clipboard"
               data-share-url={shareUrl}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                "Can't wait for the @RebaseTV premiere!\n" + shareUrl
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <svg
                 class="w-6"
@@ -92,12 +97,12 @@ const shareUrl = `${Astro.url.origin}/share/${user.userID}`
                 </path>
               </svg>
               <span>Tweet it!</span>
-            </button>
+            </a>
           </li>
           <li>
             <button
               id="copy"
-              class="flex items-center space-x-2 hover:bg-cyan hover:text-navy px-3 py-3 md:px-6 md:py-4 rounded-full w-auto"
+              class="flex items-center space-x-2 md:space-x-4 hover:bg-cyan hover:text-navy px-3 py-3 md:px-6 md:py-4 rounded-full w-auto"
               aria-label="Copy a URL to your ticket to your clipboard"
               data-share-url={shareUrl}
             >
@@ -144,7 +149,9 @@ const shareUrl = `${Astro.url.origin}/share/${user.userID}`
 <script>
   const tweetButtons = document.querySelectorAll("#tweet")
   tweetButtons.forEach((button) => {
-    button.addEventListener("click", () => {})
+    button.addEventListener("click", () => {
+      // do it
+    })
   })
 
   const copyButtons = document.querySelectorAll("#copy")

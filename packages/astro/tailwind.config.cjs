@@ -41,6 +41,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Inter", "Inter Fallback", ...defaultTheme.fontFamily.sans],
+        mono: ["Fira Mono", ...defaultTheme.fontFamily.mono],
       },
       keyframes: {
         "fade-in": {

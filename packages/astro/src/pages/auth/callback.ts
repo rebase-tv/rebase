@@ -13,5 +13,5 @@ export async function get(ctx: APIContext) {
     maxAge: 60 * 60 * 24 * 30,
     path: "/",
   })
-  return ctx.redirect("/welcome", 302)
+  return ctx.redirect("/ticket", 302)
 }

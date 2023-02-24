@@ -13,7 +13,7 @@ const { title, description, image } = Astro.props
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="h-full min-h-full bg-navy text-white antialiased">
+<html lang="en" class="min-h-full bg-navy text-white antialiased">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -23,6 +23,20 @@ const { title, description, image } = Astro.props
       as="font"
       crossorigin="anonymous"
       href="/fonts/inter-var.woff2"
+      rel="preload"
+      type="font/woff2"
+    />
+    <link
+      as="font"
+      crossorigin="anonymous"
+      href="/fonts/fira-mono-regular.woff2"
+      rel="preload"
+      type="font/woff2"
+    />
+    <link
+      as="font"
+      crossorigin="anonymous"
+      href="/fonts/fira-mono-bold.woff2"
       rel="preload"
       type="font/woff2"
     />
@@ -65,6 +79,26 @@ const { title, description, image } = Astro.props
         descent-override: 22.43%;
         line-gap-override: 0%;
         size-adjust: 107.64%;
+      }
+      @font-face {
+        font-family: "Fira Mono";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/fonts/fira-mono-regular.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Fira Mono";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/fonts/fira-mono-bold.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
       }
     </style>
   </head>

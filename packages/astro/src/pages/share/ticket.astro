@@ -1,0 +1,54 @@
+---
+import { User } from "@rebase/core/user"
+import Ticket from "@components/ticket.astro"
+
+const u = Astro.url.searchParams.get("u")
+if (!u) return Astro.redirect("/")
+const user = await User.fromID(u)
+if (!user) return Astro.redirect("/")
+
+const title = `${user.name}'s RebaseTV Ticket`
+const twitter = user.avatar.includes("twimg.com")
+const github = user.avatar.includes("githubusercontent.com")
+---
+
+<!DOCTYPE html>
+<html lang="en" class="text-white antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1200" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      as="font"
+      crossorigin="anonymous"
+      href="/fonts/inter-var.woff2"
+      rel="preload"
+      type="font/woff2"
+    />
+    {
+      github && (
+        <link
+          crossorigin="anonymous"
+          href="https://avatars.githubusercontent.com"
+          rel="preconnect"
+        />
+      )
+    }
+    {
+      twitter && (
+        <link
+          crossorigin="anonymous"
+          href="https://pbs.twimg.com/"
+          rel="preconnect"
+        />
+      )
+    }
+    <link rel="preload" as="image" href={user.avatar} />
+    <meta content="noindex" name="robots" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Ticket {user} />
+  </body>
+</html>

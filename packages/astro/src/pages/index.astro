@@ -4,7 +4,6 @@ import Container from "@components/container.astro"
 import Logo from "@components/logo.astro"
 import Message from "@components/message.astro"
 import { Auth } from "sst/node/auth"
-import { Image } from "@astrojs/image/components"
 import frame from "@images/phone-frame.svg"
 
 const messages = [
@@ -502,20 +501,19 @@ const auth =
 </Layout>
 
 <script>
-{
-  const params = new URLSearchParams(window.location.search)
-  const ref = params.get('ref')
-  console.log(ref)
-  if (ref) localStorage.setItem('ref', ref)
-}
-
-const ref = localStorage.getItem('ref')
-if (ref) {
-  for (let e of document.querySelectorAll('[data-element=login]')) {
-    e.href = e.href + '&ref=' + ref
+  {
+    const params = new URLSearchParams(window.location.search)
+    const ref = params.get("ref")
+    console.log(ref)
+    if (ref) localStorage.setItem("ref", ref)
   }
-}
 
-
-  
+  const ref = localStorage.getItem("ref")
+  if (ref) {
+    for (let e of document.querySelectorAll(
+      "[data-element=login]"
+    ) as unknown as HTMLAnchorElement[]) {
+      e.href = e.href + "&ref=" + ref
+    }
+  }
 </script>

@@ -30,6 +30,7 @@ importers:
       sst: 0.0.0-20230223175731
       tailwindcss: ^3.0.24
       ulid: ^2.3.0
+      vanilla-tilt: ^1.8.0
     dependencies:
       '@astrojs/tailwind': 3.0.1_hf2kjfio2dr6w52rh4mpociq2u
       '@aws-sdk/client-dynamodb': 3.276.0
@@ -39,6 +40,7 @@ importers:
       puppeteer-core: 10.4.0
       tailwindcss: 3.2.7
       ulid: 2.3.0
+      vanilla-tilt: 1.8.0
     devDependencies:
       astro-sst: 2.0.35
       prettier: 2.8.4
@@ -8941,6 +8943,10 @@ packages:
       diff: 5.1.0
       kleur: 4.1.5
       sade: 1.8.1
+    dev: false
+
+  /vanilla-tilt/1.8.0:
+    resolution: {integrity: sha512-wVCHyyfRuiRdKhDTNxKPb60lkagmywDSqLgFETEr71Sm646AvGxuf/14Kx9A8FaISyYvMoKQHk6FTqt+YLGhEw==}
     dev: false
 
   /vary/1.1.2:

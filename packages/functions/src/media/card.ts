@@ -41,7 +41,7 @@ export const handler = ApiHandler(async (evt) => {
       (process.env.IS_LOCAL
         ? "http://localhost:3000"
         : "https://" + useDomainName().replace("api.", "")) +
-      "/ticket?u=" +
+      "/share/ticket?u=" +
       user
     )
 

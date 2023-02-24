@@ -7,7 +7,7 @@ export function Api({ stack }: StackContext) {
 
   const api = new SSTApi(stack, "api", {
     routes: {
-      "GET /media/card": {
+      "GET /media/card.png": {
         function: {
           handler: "packages/functions/src/media/card.handler",
           runtime: "nodejs14.x",

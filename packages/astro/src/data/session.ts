@@ -14,7 +14,7 @@ export function useSession(cookies: AstroCookies) {
   if (!cookie.value) return
   const session = Session.verify(cookie.value)
   if (!session) return
-  return session as Extract<SessionValue, { type: "user" }>
+  return session 
 }
 
 export function useUserSession(cookies: AstroCookies) {

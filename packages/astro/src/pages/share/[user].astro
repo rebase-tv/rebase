@@ -8,6 +8,7 @@ if (!user) return Astro.redirect("/")
 
 const title = `Join ${user.name} at the Rebase premiere`
 const description = `Claim your personalized ticket today.`
+Astro.response.headers.set("cache-control", "public,max-age=0,s-maxage=31536000,must-revalidate")
 ---
 
 <!DOCTYPE html>

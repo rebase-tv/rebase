@@ -173,3 +173,15 @@ export async function referrals(id: string) {
     .go()
   return result.data
 }
+
+export async function* list() {
+  let cursor: string = null as any
+  while (true) {
+    const result = await UserEntity.scan.go({
+      cursor: cursor,
+    })
+    yield* result.data
+    if (!cursor) break
+    cursor = result.cursor as any
+  }
+}

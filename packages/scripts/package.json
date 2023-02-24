@@ -1,0 +1,15 @@
+{
+  "name": "@rebase/core",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "sst bind vitest",
+    "typecheck": "tsc -noEmit"
+  },
+  "devDependencies": {
+    "tsx": "^3.12.3"
+  },
+  "dependencies": {
+    "remeda": "^1.6.2"
+  }
+}

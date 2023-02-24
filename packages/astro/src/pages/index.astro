@@ -36,7 +36,10 @@ const auth =
     redirect_uri: Astro.url.origin + "/auth/callback",
     response_type: "code",
   }).toString()
-Astro.response.headers.set("cache-control", "public,max-age=0,s-maxage=31536000,must-revalidate")
+Astro.response.headers.set(
+  "cache-control",
+  "public,max-age=0,s-maxage=31536000,must-revalidate"
+)
 ---
 
 <Layout>
@@ -520,7 +523,6 @@ Astro.response.headers.set("cache-control", "public,max-age=0,s-maxage=31536000,
   {
     const params = new URLSearchParams(window.location.search)
     const ref = params.get("ref")
-    console.log(ref)
     if (ref) localStorage.setItem("ref", ref)
   }
 
@@ -533,14 +535,16 @@ Astro.response.headers.set("cache-control", "public,max-age=0,s-maxage=31536000,
     }
   }
 
-  const response = await fetch("/api/profile")
-  const json = (await response.json()) as Info | undefined
-  if (json && json.username) {
-    const link = document.getElementById("ticket-link")
-    if (link) {
-      link.style.display = "block"
-      const img = link.querySelector("img") as HTMLImageElement
-      img.src = json.avatar
+  try {
+    const response = await fetch("/api/profile")
+    const json = (await response.json()) as Info | undefined
+    if (json && json.username) {
+      const link = document.getElementById("ticket-link")
+      if (link) {
+        link.style.display = "block"
+        const img = link.querySelector("img") as HTMLImageElement
+        img.src = json.avatar
+      }
     }
-  }
+  } catch {}
 </script>

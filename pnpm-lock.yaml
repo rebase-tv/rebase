@@ -21,7 +21,7 @@ importers:
       '@astrojs/tailwind': ^3.0.1
       '@aws-sdk/client-dynamodb': ^3.272.0
       astro: ^2.0.12
-      astro-sst: ^2.0.34
+      astro-sst: ^2.0.37
       chrome-aws-lambda: ^10.1.0
       electrodb: ^2.4.1
       prettier: ^2.8.4
@@ -42,7 +42,7 @@ importers:
       ulid: 2.3.0
       vanilla-tilt: 1.8.0
     devDependencies:
-      astro-sst: 2.0.35
+      astro-sst: 2.0.37
       prettier: 2.8.4
       prettier-plugin-astro: 0.8.0
       sst: 0.0.0-20230223175731
@@ -3762,8 +3762,8 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
 
-  /astro-sst/2.0.35:
-    resolution: {integrity: sha512-3pUO8wAf1O4zaOgv7189jHAf1BmMIXA0K1aacd0sNIFR899zDtbAr5tD1toLOz2CY8THuBKWZF3O8tHzuGf6XQ==}
+  /astro-sst/2.0.37:
+    resolution: {integrity: sha512-q05nkkZlqyYBCvHzap+QURKz+rarhc+YCp8m5Qr8M2/qGAvIdrzmDLDc8q0MuVbejuUFfbUj36ukv3sazEcdow==}
     dependencies:
       '@astrojs/webapi': 2.0.1
     dev: true

@@ -25,7 +25,10 @@ console.log(
     arr,
     filter((user) => user.ref !== undefined),
     groupBy((user) => user.ref!),
-    mapKeys((key) => all.get(key.toString())?.name!),
-    mapValues((user) => user.map((u) => u.name || u.email))
+    mapKeys((key) => {
+      const u = all.get(key.toString())
+      return u?.name || u?.email || "unknown"
+    }),
+    mapValues((list) => list.length)
   )
 )

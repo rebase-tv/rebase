@@ -587,9 +587,5 @@ const id = ulid()
     <span class="block">#{user.index.toString().padStart(6, "0")}</span>
   </div>
   {false && <div class="absolute inset-0 bg-[#936A00] mix-blend-color" />}
-  {
-    animate && (
-      <script src="../../node_modules/vanilla-tilt/dist/vanilla-tilt.js" />
-    )
-  }
+  {animate && <script is:inline src="/scripts/vanilla-tilt.min.js" />}
 </div>

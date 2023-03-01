@@ -10,6 +10,7 @@ const response = await client.send(
   new GetSecretValueCommand({ SecretId: process.env.SECRET_ARN })
 )
 const privateKey = response.SecretString as string
+const decodedPrivateKey = Buffer.from(privateKey, "base64").toString("utf8")
 
 export const handler = ApiHandler(async (evt) => {
   const payload = {
@@ -17,7 +18,7 @@ export const handler = ApiHandler(async (evt) => {
     "aws:access-control-allow-origin": "*",
     exp: Date.now() + 60 * 60 * 1000,
   }
-  const encoded = jwt.sign(payload, privateKey, { algorithm: "ES384" })
+  const encoded = jwt.sign(payload, decodedPrivateKey, { algorithm: "ES384" })
   const streamUrl = `${process.env.CHANNEL_URL}${encoded}`
 
   return {

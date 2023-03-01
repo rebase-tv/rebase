@@ -8,15 +8,18 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.110",
+    "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.14.0",
     "sst": "0.0.0-20230223175731"
   },
   "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.281.0",
     "@octokit/rest": "^19.0.7",
     "@types/imagemin": "^8.0.1",
     "chrome-aws-lambda": "^10.1.0",
     "imagemin": "^8.0.1",
     "imagemin-pngquant": "^9.0.2",
+    "jsonwebtoken": "^9.0.0",
     "openid-client": "^5.4.0",
     "puppeteer-core": "^10.1.0",
     "sst": "0.0.0-20230223175731",

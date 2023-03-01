@@ -4,6 +4,8 @@ import { Dynamo } from "./stacks/dynamo"
 import { Auth } from "./stacks/auth"
 import { Site } from "./stacks/site"
 import { Api } from "./stacks/api"
+import { Stream } from "./stacks/stream"
+import { App } from "./stacks/app"
 
 export default {
   config(_input) {
@@ -14,6 +16,13 @@ export default {
     }
   },
   stacks(app) {
-    app.stack(DNS).stack(Dynamo).stack(Auth).stack(Api).stack(Site)
+    app
+      .stack(DNS)
+      .stack(Stream)
+      .stack(Dynamo)
+      .stack(Auth)
+      .stack(Api)
+      .stack(Site)
+      .stack(App)
   },
 } satisfies SSTConfig

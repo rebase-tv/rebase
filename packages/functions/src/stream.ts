@@ -19,7 +19,8 @@ export const handler = ApiHandler(async (evt) => {
     exp: Date.now() + 60 * 60 * 1000,
   }
   const encoded = jwt.sign(payload, decodedPrivateKey, { algorithm: "ES384" })
-  const streamUrl = `${process.env.CHANNEL_URL}${encoded}`
+  const channelUrl = process.env.CHANNEL_URL
+  const streamUrl = `${channelUrl}?token=${encoded}`
 
   return {
     statusCode: 200,

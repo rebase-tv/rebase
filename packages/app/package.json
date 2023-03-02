@@ -4,9 +4,9 @@
   "scripts": {
     "dev": "sst bind expo start",
     "start": "expo start --dev-client",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web"
+    "android": "sst bind expo run:android",
+    "ios": "sst bind expo run:ios",
+    "web": "sst bind expo start --web"
   },
   "dependencies": {
     "@types/react": "~18.0.27",

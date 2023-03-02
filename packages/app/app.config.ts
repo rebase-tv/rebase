@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   expo: {
     name: "rebase-mobile",
     slug: "rebase",
@@ -25,7 +25,7 @@ module.exports = {
       favicon: "./assets/favicon.png",
     },
     extra: {
-      apiUrl: process.env.API_URL,
+      apiUrl: process.env.SST_Api_url_api,
       eas: {
         projectId: "f7d88c1d-59a0-45ad-a376-58fffc034be6",
       },

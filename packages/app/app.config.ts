@@ -14,6 +14,7 @@ export default {
     assetBundlePatterns: ["**/*"],
     ios: {
       supportsTablet: true,
+      bundleIdentifier: "com.rebasetv.rebase",
     },
     android: {
       adaptiveIcon: {

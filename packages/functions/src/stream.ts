@@ -1,18 +1,13 @@
 import { ApiHandler } from "sst/node/api"
-import {
-  GetSecretValueCommand,
-  SecretsManagerClient,
-} from "@aws-sdk/client-secrets-manager"
 import jwt from "jsonwebtoken"
+import { Config } from "sst/node/config"
 
-const client = new SecretsManagerClient({})
-const response = await client.send(
-  new GetSecretValueCommand({ SecretId: process.env.SECRET_ARN })
-)
-const privateKey = response.SecretString as string
-const decodedPrivateKey = Buffer.from(privateKey, "base64").toString("utf8")
+const decodedPrivateKey = Buffer.from(
+  Config.STREAM_PRIVATE_KEY,
+  "base64"
+).toString("utf8")
 
-export const handler = ApiHandler(async (evt) => {
+export const handler = ApiHandler(async () => {
   const payload = {
     "aws:channel-arn": process.env.CHANNEL_ARN,
     "aws:access-control-allow-origin": "*",

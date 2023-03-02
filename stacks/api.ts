@@ -2,7 +2,6 @@ import { StackContext, Api as SSTApi, use } from "sst/constructs"
 import { DNS } from "./dns"
 import { Stream } from "./stream"
 import fs from "fs/promises"
-import { PolicyStatement } from "aws-cdk-lib/aws-iam"
 
 export function Api({ stack }: StackContext) {
   const dns = use(DNS)
@@ -14,21 +13,10 @@ export function Api({ stack }: StackContext) {
         function: {
           handler: "packages/functions/src/stream.handler",
           environment: {
-            SECRET_ARN: stream.secret.secretArn,
             CHANNEL_ARN: stream.channel.channelArn,
             CHANNEL_URL: stream.channel.channelPlaybackUrl,
           },
-          initialPolicy: [
-            new PolicyStatement({
-              actions: [
-                "secretsmanager:GetResourcePolicy",
-                "secretsmanager:GetSecretValue",
-                "secretsmanager:DescribeSecret",
-                "secretsmanager:ListSecretVersionIds",
-              ],
-              resources: [stream.secret.secretArn],
-            }),
-          ],
+          bind: [...Object.values(stream.secret)],
         },
       },
       "GET /media/card.png": {

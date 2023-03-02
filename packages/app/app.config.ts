@@ -17,6 +17,7 @@ export default {
       bundleIdentifier: "com.rebasetv.rebase",
     },
     android: {
+      package: "tv.rebase.app",
       adaptiveIcon: {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#ffffff",

@@ -13,7 +13,6 @@
     "sst": "0.0.0-20230223175731"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.281.0",
     "@octokit/rest": "^19.0.7",
     "@types/imagemin": "^8.0.1",
     "chrome-aws-lambda": "^10.1.0",

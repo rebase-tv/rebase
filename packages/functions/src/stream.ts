@@ -9,13 +9,12 @@ const decodedPrivateKey = Buffer.from(
 
 export const handler = ApiHandler(async () => {
   const payload = {
-    "aws:channel-arn": process.env.CHANNEL_ARN,
+    "aws:channel-arn": Config.STREAM_CHANNEL_ARN,
     "aws:access-control-allow-origin": "*",
     exp: Date.now() + 60 * 60 * 1000,
   }
   const encoded = jwt.sign(payload, decodedPrivateKey, { algorithm: "ES384" })
-  const channelUrl = process.env.CHANNEL_URL
-  const streamUrl = `${channelUrl}?token=${encoded}`
+  const streamUrl = `${Config.STREAM_CHANNEL_URL}?token=${encoded}`
 
   return {
     statusCode: 200,

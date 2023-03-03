@@ -16,7 +16,7 @@
     "nativewind": "^2.0.11",
     "react": "18.2.0",
     "react-native": "0.71.3",
-    "sst": "^2.1.5",
+    "sst": "0.0.0-20230303215139",
     "typescript": "^4.9.4",
     "expo-splash-screen": "~0.18.1"
   },

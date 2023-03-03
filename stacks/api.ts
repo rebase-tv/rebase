@@ -12,11 +12,21 @@ export function Api({ stack }: StackContext) {
       "GET /stream": {
         function: {
           handler: "packages/functions/src/stream.handler",
-          environment: {
-            CHANNEL_ARN: stream.channel.channelArn,
-            CHANNEL_URL: stream.channel.channelPlaybackUrl,
-          },
-          bind: [...Object.values(stream.secret)],
+          bind: [
+            stream.STREAM_PRIVATE_KEY,
+            stream.STREAM_CHANNEL_ARN,
+            stream.STREAM_CHANNEL_URL,
+          ],
+        },
+      },
+      "GET /{proxy+}": {
+        function: {
+          handler: "packages/functions/src/trpc.handler",
+          bind: [
+            stream.STREAM_PRIVATE_KEY,
+            stream.STREAM_CHANNEL_ARN,
+            stream.STREAM_CHANNEL_URL,
+          ],
         },
       },
       "GET /media/card.png": {

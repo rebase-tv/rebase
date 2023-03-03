@@ -10,10 +10,11 @@
     "@types/aws-lambda": "^8.10.110",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.14.0",
-    "sst": "0.0.0-20230223175731"
+    "sst": "0.0.0-20230303215139"
   },
   "dependencies": {
     "@octokit/rest": "^19.0.7",
+    "@trpc/server": "^10.14.0",
     "@types/imagemin": "^8.0.1",
     "chrome-aws-lambda": "^10.1.0",
     "imagemin": "^8.0.1",
@@ -21,9 +22,10 @@
     "jsonwebtoken": "^9.0.0",
     "openid-client": "^5.4.0",
     "puppeteer-core": "^10.1.0",
-    "sst": "0.0.0-20230223175731",
+    "sst": "0.0.0-20230303215139",
     "twitter-api-sdk": "^1.2.1",
     "twitter-api-v2": "^1.14.1",
-    "undici": "^5.20.0"
+    "undici": "^5.20.0",
+    "zod": "^3.20.6"
   }
 }

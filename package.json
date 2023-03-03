@@ -16,9 +16,9 @@
     "@tsconfig/node16": "^1.0.3",
     "aws-cdk-lib": "2.62.2",
     "constructs": "10.1.156",
-    "sst": "0.0.0-20230223175731",
+    "sst": "0.0.0-20230303215139",
     "typescript": "^4.9.5",
-    "@aws-cdk/aws-ivs-alpha": "2.62.2-alpha.0"
+    "@aws-cdk/aws-ivs-alpha": "^2.62.2-alpha.0"
   },
   "prettier": {
     "semi": false

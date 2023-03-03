@@ -1,7 +1,7 @@
 import type { AstroCookies } from "astro"
-import { Session, SessionValue } from "sst/node/auth2"
+import { Session } from "sst/node/future/auth"
 
-declare module "sst/node/auth2" {
+declare module "sst/node/future/auth" {
   export interface SessionTypes {
     user: {
       userID: string
@@ -14,7 +14,7 @@ export function useSession(cookies: AstroCookies) {
   if (!cookie.value) return
   const session = Session.verify(cookie.value)
   if (!session) return
-  return session 
+  return session
 }
 
 export function useUserSession(cookies: AstroCookies) {

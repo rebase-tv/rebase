@@ -1,4 +1,5 @@
-import { StackContext, use, Auth as SSTAuth, Config } from "sst/constructs"
+import { StackContext, use, Config } from "sst/constructs"
+import { Auth as SSTAuth } from "sst/constructs/future"
 import { DNS } from "./dns"
 import { Dynamo } from "./dynamo"
 

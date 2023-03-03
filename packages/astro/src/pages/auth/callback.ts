@@ -1,5 +1,5 @@
 import type { APIContext } from "astro"
-import { Session } from "sst/node/auth2"
+import { Auth } from "sst/node/future/auth"
 
 export async function get(ctx: APIContext) {
   // This is not doing the complete oauth flow, will fix later
@@ -7,9 +7,16 @@ export async function get(ctx: APIContext) {
   if (!code) {
     throw new Error("Code missing")
   }
-  const result = Session.verify(code)
-  if (!result) throw new Error("Invalid code")
-  ctx.cookies.set("session", code, {
+  const response = await fetch(Auth.auth.url + "/token", {
+    method: "POST",
+    body: new URLSearchParams({
+      grant_type: "authorization_code",
+      client_id: "local",
+      code,
+      redirect_uri: `${ctx.url.origin}${ctx.url.pathname}`,
+    }),
+  }).then((r) => r.json())
+  ctx.cookies.set("session", response.access_token, {
     maxAge: 60 * 60 * 24 * 30,
     path: "/",
   })

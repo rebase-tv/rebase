@@ -3,17 +3,15 @@ import {
   GithubAdapter,
   OauthAdapter,
   OidcAdapter,
-} from "sst/node/auth2"
+} from "sst/node/future/auth"
 import { Octokit } from "@octokit/rest"
 import { Config } from "sst/node/config"
 import { User } from "@rebase/core/user"
 import { Issuer } from "openid-client"
-import "sst/node/auth2"
-import { useCookie, useQueryParam, useResponse } from "sst/node/api"
+import { Api, useCookie, useQueryParam, useResponse } from "sst/node/api"
 import { Client as Twitter } from "twitter-api-sdk"
-import { fetch } from "undici"
 
-declare module "sst/node/auth2" {
+declare module "sst/node/future/auth" {
   export interface SessionTypes {
     user: {
       userID: string
@@ -125,6 +123,15 @@ export const handler = AuthHandler({
       properties: {
         userID: user!.userID,
       },
+    }
+  },
+  async onError() {
+    return {
+      statusCode: 400,
+      headers: {
+        "Content-Type": "text/plain",
+      },
+      body: "Auth failed",
     }
   },
 })

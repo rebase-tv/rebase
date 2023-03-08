@@ -10,6 +10,7 @@
     "tsx": "^3.12.3"
   },
   "dependencies": {
-    "remeda": "^1.6.2"
+    "remeda": "^1.6.2",
+    "ulid": "^2.3.0"
   }
 }

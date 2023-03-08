@@ -41,7 +41,7 @@ export function Api({ stack }: StackContext) {
           copyFiles: [{ from: "fonts" }],
           hooks: {
             afterBuild: async (_, out) => {
-              await fs.cp(
+              await fs.copyFile(
                 "./bin/pngquant",
                 out + `/node_modules/pngquant-bin/vendor/pngquant`
               )

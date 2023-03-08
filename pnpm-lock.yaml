@@ -54,21 +54,27 @@ importers:
       '@aws-sdk/client-dynamodb': ^3.272.0
       '@aws-sdk/smithy-client': ^3.272.0
       '@aws-sdk/types': ^3.272.0
+      '@types/jsonwebtoken': ^9.0.1
       '@types/node': ^18.14.0
       aws-sdk: ^2.1319.0
       electrodb: ^2.4.1
+      jsonwebtoken: ^9.0.0
       sst: 0.0.0-20230303215921
       ulid: ^2.3.0
       vitest: ^0.28.5
+      zod: ^3.20.6
     dependencies:
       '@aws-sdk/client-dynamodb': 3.276.0
       '@aws-sdk/smithy-client': 3.272.0
       '@aws-sdk/types': 3.272.0
       aws-sdk: 2.1321.0
       electrodb: 2.4.1_tgkdcrjo6iqidewbcrr5pntcjy
+      jsonwebtoken: 9.0.0
       sst: 0.0.0-20230303215921
       ulid: 2.3.0
+      zod: 3.20.6
     devDependencies:
+      '@types/jsonwebtoken': 9.0.1
       '@types/node': 18.14.0
       vitest: 0.28.5
 
@@ -115,8 +121,10 @@ importers:
     specifiers:
       remeda: ^1.6.2
       tsx: ^3.12.3
+      ulid: ^2.3.0
     dependencies:
       remeda: 1.6.2
+      ulid: 2.3.0
     devDependencies:
       tsx: 3.12.3
 

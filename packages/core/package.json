@@ -7,6 +7,7 @@
     "typecheck": "tsc -noEmit"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.14.0",
     "sst": "0.0.0-20230303215921",
     "vitest": "^0.28.5"
@@ -17,7 +18,9 @@
     "@aws-sdk/types": "^3.272.0",
     "aws-sdk": "^2.1319.0",
     "electrodb": "^2.4.1",
+    "jsonwebtoken": "^9.0.0",
     "sst": "0.0.0-20230303215921",
-    "ulid": "^2.3.0"
+    "ulid": "^2.3.0",
+    "zod": "^3.20.6"
   }
 }

@@ -1,25 +1,32 @@
-import {
-  CreateAWSLambdaContextOptions,
-  awsLambdaRequestHandler,
-} from "@trpc/server/adapters/aws-lambda"
-import { inferAsyncReturnType, initTRPC } from "@trpc/server"
-import { APIGatewayProxyEventV2 } from "aws-lambda"
+import { awsLambdaRequestHandler } from "@trpc/server/adapters/aws-lambda"
+import { initTRPC } from "@trpc/server"
 import { z } from "zod"
 import { ApiHandler } from "sst/node/api"
-import { useSession } from "sst/node/auth2"
+import { Stream } from "@rebase/core/stream"
+import { provideActor } from "@rebase/core/actor"
+import { useSession } from "sst/node/future/auth"
 
 export const t = initTRPC.create()
 
 const router = t.router({
-  stream_create: t.procedure.input(z.string()).query((req) => {
-    return "hey"
-  }),
+  stream_create: expose(Stream.create),
 })
+
+export type Router = typeof router
+
+export function expose<
+  T extends ((input: any) => any) & { schema: z.ZodSchema<any, any, any> }
+>(fn: T) {
+  return t.procedure.input(fn.schema).query((req) => {
+    return fn(req.input)
+  })
+}
 
 const trpc = awsLambdaRequestHandler({
   router,
-  async createContext() {
-    useSession()
+  createContext: async () => {
+    const session = useSession()
+    provideActor(session)
   },
 })
 

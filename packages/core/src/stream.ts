@@ -20,6 +20,5 @@ export const create = zod(z.any(), () => {
   }
   const encoded = jwt.sign(payload, decodedPrivateKey, { algorithm: "ES384" })
   const streamUrl = `${Config.STREAM_CHANNEL_URL}?token=${encoded}`
-
-  return streamUrl
+  return { url: streamUrl }
 })

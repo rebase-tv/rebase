@@ -1,4 +1,10 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@rebase/functions/*": ["../functions/src/*"],
+      "@rebase/core/*": ["../core/src/*"]
+    }
+  },
   "extends": "expo/tsconfig.base"
 }

@@ -3,6 +3,8 @@ import { initTRPC } from "@trpc/server"
 import { z } from "zod"
 import { ApiHandler } from "sst/node/api"
 import { Stream } from "@rebase/core/stream"
+import { useSession } from "sst/node/future/auth"
+import { provideActor } from "@rebase/core/actor"
 
 export const t = initTRPC.create()
 
@@ -23,7 +25,10 @@ export function expose<
 
 const trpc = awsLambdaRequestHandler({
   router,
-  createContext: async () => {},
+  createContext: async () => {
+    const session = useSession()
+    provideActor(session)
+  },
 })
 
 export const handler = ApiHandler(async (req, ctx) => {

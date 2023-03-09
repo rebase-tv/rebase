@@ -8,14 +8,14 @@ importers:
       '@tsconfig/node16': ^1.0.3
       aws-cdk-lib: 2.62.2
       constructs: 10.1.156
-      sst: 0.0.0-20230303215921
+      sst: 2.1.18
       typescript: ^4.9.5
     devDependencies:
       '@aws-cdk/aws-ivs-alpha': 2.62.2-alpha.0_iqmstt3dpu37s47wyywi32lmnq
       '@tsconfig/node16': 1.0.3
       aws-cdk-lib: 2.62.2_constructs@10.1.156
       constructs: 10.1.156
-      sst: 0.0.0-20230303215921
+      sst: 2.1.18
       typescript: 4.9.5
 
   packages/astro:
@@ -29,7 +29,7 @@ importers:
       prettier: ^2.8.4
       prettier-plugin-astro: ^0.8.0
       puppeteer-core: ^10.1.0
-      sst: 0.0.0-20230303215921
+      sst: 2.1.18
       tailwindcss: ^3.0.24
       ulid: ^2.3.0
       vanilla-tilt: ^1.8.0
@@ -40,7 +40,7 @@ importers:
       chrome-aws-lambda: 10.1.0_puppeteer-core@10.4.0
       electrodb: 2.4.2_mbmpx4ltfekq253ferlaceaoqi
       puppeteer-core: 10.4.0
-      sst: 0.0.0-20230303215921
+      sst: 2.1.18
       tailwindcss: 3.2.7
       ulid: 2.3.0
       vanilla-tilt: 1.8.0
@@ -59,7 +59,7 @@ importers:
       aws-sdk: ^2.1319.0
       electrodb: ^2.4.1
       jsonwebtoken: ^9.0.0
-      sst: 0.0.0-20230303215921
+      sst: 2.1.18
       ulid: ^2.3.0
       vitest: ^0.28.5
       zod: ^3.20.6
@@ -70,7 +70,7 @@ importers:
       aws-sdk: 2.1331.0
       electrodb: 2.4.2_qwdfxceotffatekof3tng346d4
       jsonwebtoken: 9.0.0
-      sst: 0.0.0-20230303215921
+      sst: 2.1.18
       ulid: 2.3.0
       zod: 3.21.4
     devDependencies:
@@ -92,7 +92,7 @@ importers:
       jsonwebtoken: ^9.0.0
       openid-client: ^5.4.0
       puppeteer-core: ^10.1.0
-      sst: 0.0.0-20230303215921
+      sst: 2.1.18
       twitter-api-sdk: ^1.2.1
       twitter-api-v2: ^1.14.1
       undici: ^5.20.0
@@ -107,7 +107,7 @@ importers:
       jsonwebtoken: 9.0.0
       openid-client: 5.4.0
       puppeteer-core: 10.4.0
-      sst: 0.0.0-20230303215921
+      sst: 2.1.18
       twitter-api-sdk: 1.2.1
       twitter-api-v2: 1.14.2
       undici: 5.20.0
@@ -2000,6 +2000,9 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
+  /@balena/dockerignore/1.0.2:
+    resolution: {integrity: sha512-wMue2Sy4GAVTk6Ic4tJVcnfdau+gx2EnG7S+uAEe+TWJFqE4YoWN4/H8MSLj4eYJKxGg26lZwboEniNiNwZQ6Q==}
+
   /@emmetio/abbreviation/2.2.3:
     resolution: {integrity: sha512-87pltuCPt99aL+y9xS6GPZ+Wmmyhll2WXH73gG/xpGcQ84DRnptBsI2r0BeIQ0EB/SQTOe2ANPqFqj3Rj5FOGA==}
     dependencies:
@@ -3341,7 +3344,16 @@ packages:
       '@aws-cdk/asset-awscli-v1': 2.2.99
       '@aws-cdk/asset-kubectl-v20': 2.1.1
       '@aws-cdk/asset-node-proxy-agent-v5': 2.0.79
+      '@balena/dockerignore': 1.0.2
+      case: 1.6.3
       constructs: 10.1.156
+      fs-extra: 9.1.0
+      ignore: 5.2.4
+      jsonschema: 1.4.1
+      minimatch: 3.1.2
+      punycode: 2.3.0
+      semver: 7.3.8
+      yaml: 1.10.2
     bundledDependencies:
       - '@balena/dockerignore'
       - case
@@ -3371,6 +3383,17 @@ packages:
       crypto-js: 4.1.1
       mqtt: 4.3.7
       tar: 6.1.13
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
+
+  /aws-iot-device-sdk-v2/1.9.5:
+    resolution: {integrity: sha512-b8emmQYvprmtwW1Ot7Bmds8qSLNzYRSyhsx06oufwruoJuhFn0QZ8XvBeEjt3CNnn6GNybigXO8+VFViJIbIDg==}
+    dependencies:
+      '@aws-sdk/util-utf8-browser': 3.259.0
+      aws-crt: 1.15.9
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -3697,6 +3720,10 @@ packages:
   /caniuse-lite/1.0.30001464:
     resolution: {integrity: sha512-oww27MtUmusatpRpCGSOneQk2/l5czXANDSFvsc7VuOQ86s3ANhZetpwXNf1zY/zdfP63Xvjz325DAdAoES13g==}
 
+  /case/1.6.3:
+    resolution: {integrity: sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==}
+    engines: {node: '>= 0.8.0'}
+
   /caw/2.0.1:
     resolution: {integrity: sha512-Cg8/ZSBEa8ZVY9HspcGUYaK63d/bN7rqS3CYCzEGUxuYv6UlmcjzDUz2fCFFHyTvUW5Pk0I+3hkA3iXlIj6guA==}
     engines: {node: '>=4'}
@@ -3956,7 +3983,7 @@ packages:
     resolution: {integrity: sha512-rraC8NXWOEjhADbZe9QBNzLAN5Q3fsTPQtBV+fEVj6xKIgDgNiEVE6ZNfHpZOqfQ21YUzfVNUXLOEZquYvQPPg==}
     dependencies:
       leven: 2.1.0
-      minimist: 1.2.6
+      minimist: 1.2.8
 
   /common-ancestor-path/1.0.1:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
@@ -4356,7 +4383,7 @@ packages:
   /duplexer2/0.1.4:
     resolution: {integrity: sha512-asLFVfWWtJ90ZyOUHMqk7/S2w2guQKxUI2itj3d92ADHhxUSbCMGi1f1cBcJ7xM1To+pE/Khbwo1yuNbMEPKeA==}
     dependencies:
-      readable-stream: 2.1.5
+      readable-stream: 2.3.8
 
   /duplexer3/0.1.5:
     resolution: {integrity: sha512-1A8za6ws41LQgv9HrE/66jyC5yuSjQ3L/KOpFtoBilsAK2iA2wuS5rTt1OCzIvtS2V7nVmedsUU+DGRcjBmOYA==}
@@ -5349,7 +5376,6 @@ packages:
   /ignore/5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
-    dev: false
 
   /image-size/1.0.2:
     resolution: {integrity: sha512-xfOoWjceHntRb3qFCrh5ZFORYH8XCdYpASltMhZ/Q0KZiOwjdE/Yl2QCiWdwD+lygV5bMCvauzgu5PxBX/Yerg==}
@@ -5729,6 +5755,9 @@ packages:
   /jsonschema/1.2.7:
     resolution: {integrity: sha512-3dFMg9hmI9LdHag/BRIhMefCfbq1hicvYMy8YhZQorAdzOzWz7NjniSpn39yjpzUAMIWtGyyZuH2KNBloH7ZLw==}
     dev: false
+
+  /jsonschema/1.4.1:
+    resolution: {integrity: sha512-S6cATIPVv1z0IlxdN+zUk5EPjkGCdnhN4wVSBlvoUO1tOLJootbo9CquNJmbIh4yikWHiUedhRYrNPn1arpEmQ==}
 
   /jsonwebtoken/9.0.0:
     resolution: {integrity: sha512-tuGfYXxkQGDPnLJ7SibiQgVgeDgfbPq2k2ICcbgqW8WxWLBAxKQM/ZCu/IT8SOSwmaYl4dpTFCW5xZv7YbbWUw==}
@@ -6556,7 +6585,7 @@ packages:
       duplexify: 4.1.2
       help-me: 3.0.0
       inherits: 2.0.4
-      minimist: 1.2.6
+      minimist: 1.2.8
       mqtt-packet: 6.10.0
       pump: 3.0.0
       readable-stream: 3.6.1
@@ -7911,8 +7940,8 @@ packages:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
     dev: false
 
-  /sst/0.0.0-20230303215921:
-    resolution: {integrity: sha512-A1ynKZhwzXYPsb9rQ7WKPeHi5rS0cWfuPxxh54nIs+K9oKkTSS6uC/qxbSP/gmTPlNq6vlZqzCjBID8x2GKhGA==}
+  /sst/2.1.18:
+    resolution: {integrity: sha512-ZZJ6Y65ZabXKefgJQkbcNrpPb5ZsXPp90w2CQ/dWbmj4DqkKi29CWJYj2WNHBETEZ5HC9JwHSCEvijuqI6vJPA==}
     hasBin: true
     peerDependencies:
       '@sls-next/lambda-at-edge': ^3.7.0
@@ -7952,6 +7981,7 @@ packages:
       aws-cdk: 2.62.2
       aws-cdk-lib: 2.62.2_constructs@10.1.156
       aws-iot-device-sdk: 2.2.12
+      aws-iot-device-sdk-v2: 1.9.5
       aws-sdk: 2.1331.0
       builtin-modules: 3.2.0
       cdk-assets: 2.62.2

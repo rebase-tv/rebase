@@ -12,7 +12,6 @@ const decodedPrivateKey = Buffer.from(
 ).toString("utf8")
 
 export const create = zod(z.any(), () => {
-  assertActor("user")
   const payload = {
     "aws:channel-arn": Config.STREAM_CHANNEL_ARN,
     "aws:access-control-allow-origin": "*",

@@ -3455,12 +3455,40 @@
   dependencies:
     "@sinonjs/commons" "^2.0.0"
 
+"@tanstack/query-core@4.26.1":
+  version "4.26.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.26.1.tgz#7a441086c4d3d79e1d156c0a355bd3567213626e"
+  integrity sha512-Zrx2pVQUP4ndnsu6+K/m8zerXSVY8QM+YSbxA1/jbBY21GeCd5oKfYl92oXPK0hPEUtoNuunIdiq0ZMqLos+Zg==
+
+"@tanstack/react-query@^4.26.1":
+  version "4.26.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-4.26.1.tgz#d254f6b7b297b5ae4204c84e6622506e5ec77d09"
+  integrity sha512-i3dnz4TOARGIXrXQ5P7S25Zfi4noii/bxhcwPurh2nrf5EUCcAt/95TB2HSmMweUBx206yIMWUMEQ7ptd6zwDg==
+  dependencies:
+    "@tanstack/query-core" "4.26.1"
+    use-sync-external-store "^1.2.0"
+
+"@trpc/client@^10.14.1":
+  version "10.14.1"
+  resolved "https://registry.yarnpkg.com/@trpc/client/-/client-10.14.1.tgz#e30a5c1b7ef17c331f9b35e3401126d6a7b55699"
+  integrity sha512-cmaRWpDV+uVuyIeaJ8zMiuOzkQlZc9QaArQwvSnCfyYRkFUhWffKVnjZOT88/qAjgJzeYLwdM/I69+ydSmjJQQ==
+
+"@trpc/react-query@^10.14.1":
+  version "10.14.1"
+  resolved "https://registry.yarnpkg.com/@trpc/react-query/-/react-query-10.14.1.tgz#468ebb88de749ed4ff37ce2904819330c70f8cf4"
+  integrity sha512-lwMGndGSdC1HxQpAPOWAtv3bOPtlG2GE6vO69i9U7yuaDwZ08MGkDANE9tqI7t2MZdb8U2yWPbPcs6L5cctVbw==
+
 "@trpc/server@9.16.0":
   version "9.16.0"
   resolved "https://registry.yarnpkg.com/@trpc/server/-/server-9.16.0.tgz#93fc30166f92a4f1286da63ad3bad42c955c7e15"
   integrity sha512-IENsJs41ZR4oeFUJhsNNTSgEOtuRN0m9u7ec4u3eG/qOc7bIoo1nDoYtx4bl6OJJSQYEytG9tlcVz9G8OAaHbg==
   dependencies:
     tslib "^2.1.0"
+
+"@trpc/server@^10.14.1":
+  version "10.14.1"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.14.1.tgz#923ca6bd23e111052c718a138b3b66969192dd31"
+  integrity sha512-+xF2j4PITHI2+At7oDnu7clbvG7cn+lZQLJKrIKfJKssAwq8XQ7x39QF4CUd1Ix0TbjSrLwFoCj2lx9jbaSYnQ==
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.4"
@@ -5504,7 +5532,7 @@ expo-asset@~8.9.0:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
-expo-constants@^14.2.1, expo-constants@~14.2.0, expo-constants@~14.2.1:
+expo-constants@~14.2.0, expo-constants@~14.2.1:
   version "14.2.1"
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-14.2.1.tgz#b5b6b8079d2082c31ccf2cbc7cf97a0e83c229c3"
   integrity sha512-DD5u4QmBds2U7uYo409apV7nX+XjudARcgqe7S9aRFJ/6kyftmuxvk1DpaU4X42Av8z/tfKwEpuxl+vl7HHx/Q==
@@ -9594,10 +9622,10 @@ ssri@^8.0.1:
   dependencies:
     minipass "^3.1.1"
 
-sst@^2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/sst/-/sst-2.1.5.tgz#aeeeab91396e709a9b77fbca33694ac270d69baf"
-  integrity sha512-k+LwuWX+93kJ24JY77LltqlhE/ILgwzx8gnsozRnJt7ZCP12nErJIvHs2YFUCOqJValzecF+iDe+0PmXWh79Eg==
+sst@0.0.0-20230303215921:
+  version "0.0.0-20230303215921"
+  resolved "https://registry.yarnpkg.com/sst/-/sst-0.0.0-20230303215921.tgz#276e959dee7401573441e7666ecb25cb3129bf0a"
+  integrity sha512-A1ynKZhwzXYPsb9rQ7WKPeHi5rS0cWfuPxxh54nIs+K9oKkTSS6uC/qxbSP/gmTPlNq6vlZqzCjBID8x2GKhGA==
   dependencies:
     "@aws-cdk/aws-apigatewayv2-alpha" "^2.62.2-alpha.0"
     "@aws-cdk/aws-apigatewayv2-authorizers-alpha" "^2.62.2-alpha.0"
@@ -10355,7 +10383,7 @@ url@0.10.3:
     punycode "1.3.2"
     querystring "0.2.0"
 
-use-sync-external-store@^1.0.0, use-sync-external-store@^1.1.0:
+use-sync-external-store@^1.0.0, use-sync-external-store@^1.1.0, use-sync-external-store@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
   integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==

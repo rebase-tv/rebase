@@ -18,7 +18,7 @@
     "tailwindcss": "^3.0.24",
     "ulid": "^2.3.0",
     "vanilla-tilt": "^1.8.0",
-    "sst": "0.0.0-20230303215921"
+    "sst": "2.1.18"
   },
   "devDependencies": {
     "astro-sst": "^2.0.37",

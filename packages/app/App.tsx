@@ -98,6 +98,7 @@ function Screen() {
   return (
     <StyledMaskedView
       className="relative flex-1 flex-row h-full"
+      androidRenderingMode="software"
       maskElement={
         <View
           style={{
@@ -118,6 +119,7 @@ function Screen() {
     >
       <IVSPlayer
         autoplay
+        volume={0.1}
         streamUrl={stream.data.url}
         onData={(data) => setQualities(data.qualities)}
         onTextMetadataCue={setCue}
@@ -145,6 +147,7 @@ function Screen() {
               >
                 <StyledIVSPlayer
                   autoplay
+                  muted
                   streamUrl={stream.data.url}
                   onData={(data) => setQualities(data.qualities)}
                   onTextMetadataCue={setCue}

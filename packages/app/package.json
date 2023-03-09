@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "sst bind expo start",
     "start": "expo start --dev-client",
-    "android": "sst bind --stage=adam expo run:android",
+    "android": "sst bind expo run:android",
     "ios": "sst bind expo run:ios",
     "web": "sst bind expo start --web"
   },

@@ -3997,6 +3997,14 @@ aws-crt@^1.15.9:
     mqtt "^4.3.7"
     tar "^6.1.11"
 
+aws-iot-device-sdk-v2@^1.9.5:
+  version "1.9.5"
+  resolved "https://registry.yarnpkg.com/aws-iot-device-sdk-v2/-/aws-iot-device-sdk-v2-1.9.5.tgz#3df5c6c50dc95cb4081b1ec4b2e21b0cd98c0bb9"
+  integrity sha512-b8emmQYvprmtwW1Ot7Bmds8qSLNzYRSyhsx06oufwruoJuhFn0QZ8XvBeEjt3CNnn6GNybigXO8+VFViJIbIDg==
+  dependencies:
+    "@aws-sdk/util-utf8-browser" "^3.109.0"
+    aws-crt "^1.15.9"
+
 aws-iot-device-sdk@^2.2.12:
   version "2.2.12"
   resolved "https://registry.yarnpkg.com/aws-iot-device-sdk/-/aws-iot-device-sdk-2.2.12.tgz#94e66eb260c59a009690af805bcce14063e7d186"
@@ -9622,10 +9630,10 @@ ssri@^8.0.1:
   dependencies:
     minipass "^3.1.1"
 
-sst@0.0.0-20230303215921:
-  version "0.0.0-20230303215921"
-  resolved "https://registry.yarnpkg.com/sst/-/sst-0.0.0-20230303215921.tgz#276e959dee7401573441e7666ecb25cb3129bf0a"
-  integrity sha512-A1ynKZhwzXYPsb9rQ7WKPeHi5rS0cWfuPxxh54nIs+K9oKkTSS6uC/qxbSP/gmTPlNq6vlZqzCjBID8x2GKhGA==
+sst@2.1.18:
+  version "2.1.18"
+  resolved "https://registry.yarnpkg.com/sst/-/sst-2.1.18.tgz#46a8bf92ba0f0209b76b020cea059581cc2f84ab"
+  integrity sha512-ZZJ6Y65ZabXKefgJQkbcNrpPb5ZsXPp90w2CQ/dWbmj4DqkKi29CWJYj2WNHBETEZ5HC9JwHSCEvijuqI6vJPA==
   dependencies:
     "@aws-cdk/aws-apigatewayv2-alpha" "^2.62.2-alpha.0"
     "@aws-cdk/aws-apigatewayv2-authorizers-alpha" "^2.62.2-alpha.0"
@@ -9659,6 +9667,7 @@ sst@0.0.0-20230303215921:
     aws-cdk "2.62.2"
     aws-cdk-lib "2.62.2"
     aws-iot-device-sdk "^2.2.12"
+    aws-iot-device-sdk-v2 "^1.9.5"
     aws-sdk "^2.1326.0"
     builtin-modules "3.2.0"
     cdk-assets "2.62.2"

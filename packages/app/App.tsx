@@ -38,17 +38,18 @@ export default function App() {
 function Screen() {
   const stream = trpc.stream_create.useQuery({})
   const [cue, setCue] = useState<TextMetadataCue>()
-  const [qualities, setQualities] = useState<Quality[]>()
   const transition = useSharedValue(0)
 
   useEffect(() => {
     if (!cue) return
 
     transition.value = 1
-    setTimeout(() => {
-      setCue(undefined)
+    const handle = setTimeout(() => {
       transition.value = 0
+      setCue(undefined)
     }, 1000 * 10)
+
+    return () => clearTimeout(handle)
   }, [cue, setCue])
 
   const handlePress = () => {}
@@ -95,50 +96,28 @@ function Screen() {
   })
 
   if (!stream.data) return null
+
   return (
-    <StyledMaskedView
-      className="relative flex-1 flex-row h-full"
-      androidRenderingMode="software"
-      maskElement={
-        <View
-          style={{
-            // Transparent background because mask is based off alpha channel.
-            backgroundColor: "transparent",
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {/* <Animated.Image */}
-          {/*   source={require("./assets/circle-mask.png")} */}
-          {/*   className="w-full h-full object-cover" */}
-          {/* /> */}
-          <View className="w-full h-full bg-black" />
-        </View>
-      }
-    >
-      <IVSPlayer
+    <View className="relative flex-1 flex-row h-full items-center justify-center">
+      <StyledIVSPlayer
         autoplay
         volume={0.1}
         streamUrl={stream.data.url}
-        onData={(data) => setQualities(data.qualities)}
         onTextMetadataCue={setCue}
+        className="absolute inset-y-0 aspect-[1080/1920]"
       >
-        <View className="absolute inset-0" style={{ opacity: cue ? 1 : 0 }}>
+        <View
+          className={cue ? "absolute inset-0 block" : "absolute inset-0 hidden"}
+        >
           <View className="absolute inset-0 bg-navy/80" />
-          <Animated.View
-            // entering={SlideInUp.duration(500).easing(Easing.bounce)}
-            className="absolute top-8 inset-x-2 bg-light rounded-2xl h-2/3 flex-1 items-center justify-center"
-          >
+          <View className="absolute top-8 inset-x-8 bg-light rounded-2xl h-2/3 flex-1 items-center justify-center">
             <View className="absolute top-0 inset-x-0">
               <AnimatedMaskedView
-                // entering={entering}
                 className="mt-5 w-24 aspect-[1080/1920] mx-auto overflow-clip"
                 style={hostAvatarStyles}
                 maskElement={
                   <View className="absolute inset-0 bg-transparent flex-1 justify-center items-center">
                     <Animated.View
-                      // entering={maskEntering}
                       className="absolute inset-0 bg-black"
                       style={hostMaskStyles}
                     />
@@ -149,13 +128,11 @@ function Screen() {
                   autoplay
                   muted
                   streamUrl={stream.data.url}
-                  onData={(data) => setQualities(data.qualities)}
-                  onTextMetadataCue={setCue}
                   className="absolute inset-x-0 aspect-[1080/1920] object-cover bg-pink"
                 />
               </AnimatedMaskedView>
             </View>
-          </Animated.View>
+          </View>
         </View>
         <View className="absolute bottom-8 right-4">
           <StyledTouchableHighlight
@@ -170,7 +147,7 @@ function Screen() {
             />
           </StyledTouchableHighlight>
         </View>
-      </IVSPlayer>
-    </StyledMaskedView>
+      </StyledIVSPlayer>
+    </View>
   )
 }

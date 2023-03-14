@@ -2,12 +2,19 @@ import { StackContext, Api as SSTApi, use } from "sst/constructs"
 import { DNS } from "./dns"
 import { Stream } from "./stream"
 import fs from "fs/promises"
+import { Auth } from "./auth"
+import { Dynamo } from "./dynamo"
 
 export function Api({ stack }: StackContext) {
   const dns = use(DNS)
   const stream = use(Stream)
 
   const api = new SSTApi(stack, "api", {
+    defaults: {
+      function: {
+        bind: [use(Auth), use(Dynamo)],
+      },
+    },
     routes: {
       "GET /stream": {
         function: {

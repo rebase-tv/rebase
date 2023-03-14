@@ -1,5 +1,6 @@
 import { z } from "zod"
 import { Context } from "sst/context"
+import { User } from "./user"
 
 export const PublicActor = z.object({
   type: z.literal("public"),
@@ -39,4 +40,12 @@ export function assertActor<T extends Actor["type"]>(type: T) {
     throw new Error(`Expected actor type "${type}" but got "${actor.type}"`)
   }
   return actor as Extract<Actor, { type: T }>
+}
+
+const HOSTS = ["mail@thdxr.com", "elmore.adam@gmail.com"]
+export async function assertHost() {
+  const user = assertActor("user")
+  const info = await User.fromID(user.properties.userID)
+  if (info && HOSTS.includes(info.email)) return
+  throw new Error(`User "${user.properties.userID}" is not a host`)
 }

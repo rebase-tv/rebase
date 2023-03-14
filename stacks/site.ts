@@ -1,4 +1,4 @@
-import { AstroSite, StackContext, use } from "sst/constructs"
+import { AstroSite, StackContext, StaticSite, use } from "sst/constructs"
 import { Auth } from "./auth"
 import { DNS } from "./dns"
 import { Dynamo } from "./dynamo"
@@ -11,12 +11,20 @@ export function Site({ stack }: StackContext) {
   const dns = use(DNS)
   const api = use(Api)
 
-  const site = new AstroSite(stack, "site", {
+  const astro = new AstroSite(stack, "site", {
     bind: [auth, dynamo, api],
     path: "packages/astro",
     customDomain: {
       hostedZone: dns.zone,
       domainName: dns.domain,
+    },
+  })
+
+  const site = new StaticSite(stack, "producer", {
+    path: "packages/producer",
+    environment: {
+      VITE_AUTH_URL: auth.url,
+      VITE_API_URL: api.url,
     },
   })
 }

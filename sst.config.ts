@@ -6,6 +6,7 @@ import { Site } from "./stacks/site"
 import { Api } from "./stacks/api"
 import { Stream } from "./stacks/stream"
 import { App } from "./stacks/app"
+import { Realtime } from "./stacks/realtime"
 
 export default {
   config(_input) {
@@ -24,5 +25,6 @@ export default {
       .stack(Api)
       .stack(Site)
       .stack(App)
+      .stack(Realtime)
   },
 } satisfies SSTConfig

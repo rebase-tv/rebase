@@ -5,7 +5,7 @@ export function Stream({ stack }: StackContext) {
   const channel = new Channel(stack, "channel", { authorized: true })
   const streamKey = channel.addStreamKey("primary")
 
-  if (stack.stage === "production" || stack.stage === "dev") {
+  if (stack.stage === "production") {
     new PlaybackKeyPair(stack, "playback-key-pair", {
       publicKeyMaterial: `-----BEGIN PUBLIC KEY-----
 MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEgV4GwqVRk67xDXtoCN7rAk8QmPofExpK

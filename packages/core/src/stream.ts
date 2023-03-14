@@ -11,7 +11,7 @@ const decodedPrivateKey = Buffer.from(
   "base64"
 ).toString("utf8")
 
-export const create = zod(z.any(), () => {
+export const create = zod(z.void(), () => {
   const payload = {
     "aws:channel-arn": Config.STREAM_CHANNEL_ARN,
     "aws:access-control-allow-origin": "*",

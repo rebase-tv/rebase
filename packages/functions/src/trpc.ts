@@ -15,11 +15,10 @@ const router = t.router({
 export type Router = typeof router
 
 export function expose<
-  T extends ((input: any) => F) & { schema: z.ZodSchema<any, any, any> },
-  F = ReturnType<T>
+  T extends ((input: any) => any) & { schema: z.ZodSchema<any, any, any> }
 >(fn: T) {
-  return t.procedure.input(fn.schema).query((req): F => {
-    return fn(req.input)
+  return t.procedure.input(fn.schema).query((req) => {
+    return fn(req.input) as ReturnType<T>
   })
 }
 

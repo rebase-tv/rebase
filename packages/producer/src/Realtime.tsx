@@ -25,7 +25,7 @@ export function Realtime() {
       .with_endpoint(url)
       .with_custom_authorizer(
         "",
-        "thdxr-rebase-authorizer",
+        `${import.meta.env.VITE_STAGE}-rebase-authorizer`,
         "",
         localStorage.getItem("token")!
       )

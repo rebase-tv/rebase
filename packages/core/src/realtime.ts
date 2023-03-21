@@ -13,7 +13,7 @@ const iot = new IoTClient({})
 const data = new IoTDataPlaneClient({})
 
 export const endpoint = zod(z.void(), async () => {
-  assertHost()
+  await assertHost()
   const result = await iot.send(
     new DescribeEndpointCommand({
       endpointType: "iot:Data-ATS",

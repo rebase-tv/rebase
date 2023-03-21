@@ -53,6 +53,7 @@ importers:
     specifiers:
       '@aws-sdk/client-dynamodb': ^3.272.0
       '@aws-sdk/client-iot': ^3.290.0
+      '@aws-sdk/client-iot-data-plane': ^3.290.0
       '@aws-sdk/smithy-client': ^3.272.0
       '@aws-sdk/types': ^3.272.0
       '@types/jsonwebtoken': ^9.0.1
@@ -67,6 +68,7 @@ importers:
     dependencies:
       '@aws-sdk/client-dynamodb': 3.287.0
       '@aws-sdk/client-iot': 3.290.0
+      '@aws-sdk/client-iot-data-plane': 3.290.0
       '@aws-sdk/smithy-client': 3.279.0
       '@aws-sdk/types': 3.272.0
       aws-sdk: 2.1331.0
@@ -121,6 +123,7 @@ importers:
 
   packages/producer:
     specifiers:
+      '@solid-primitives/event-bus': ^1.0.2
       '@solidjs/router': ^0.8.0
       '@tanstack/solid-query': 5.0.0-alpha.5
       '@trpc/client': ^10.16.0
@@ -134,6 +137,7 @@ importers:
       vite-plugin-node-polyfills: ^0.7.0
       vite-plugin-solid: ^2.5.0
     dependencies:
+      '@solid-primitives/event-bus': 1.0.2_solid-js@1.6.14
       '@solidjs/router': 0.8.0_solid-js@1.6.14
       '@tanstack/solid-query': 5.0.0-alpha.5_solid-js@1.6.14
       '@trpc/client': 10.16.0_@trpc+server@10.14.1
@@ -707,43 +711,43 @@ packages:
     transitivePeerDependencies:
       - aws-crt
 
-  /@aws-sdk/client-iot-data-plane/3.287.0:
-    resolution: {integrity: sha512-dgLeWcpnM1Br+o3x8WJcftCZUsW+HUzZdxr5Q2MrIVS2tw7EAVsFe3/NzPSKa2chfR9Jq/p4wDp2Ly6hdIXrKA==}
+  /@aws-sdk/client-iot-data-plane/3.290.0:
+    resolution: {integrity: sha512-GxMIVfVZDS7Ne85IQueDf91zfk9v/8pKs/eSmcdx6J1ErHJ685ncaUJbBIstLY3iiCUefRvEX0GLmdRp/rFpTw==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sts': 3.287.0
-      '@aws-sdk/config-resolver': 3.287.0
-      '@aws-sdk/credential-provider-node': 3.287.0
-      '@aws-sdk/fetch-http-handler': 3.282.0
-      '@aws-sdk/hash-node': 3.272.0
-      '@aws-sdk/invalid-dependency': 3.272.0
-      '@aws-sdk/middleware-content-length': 3.282.0
-      '@aws-sdk/middleware-endpoint': 3.282.0
-      '@aws-sdk/middleware-host-header': 3.282.0
-      '@aws-sdk/middleware-logger': 3.287.0
-      '@aws-sdk/middleware-recursion-detection': 3.282.0
-      '@aws-sdk/middleware-retry': 3.287.0
-      '@aws-sdk/middleware-serde': 3.272.0
-      '@aws-sdk/middleware-signing': 3.282.0
-      '@aws-sdk/middleware-stack': 3.272.0
-      '@aws-sdk/middleware-user-agent': 3.282.0
-      '@aws-sdk/node-config-provider': 3.287.0
-      '@aws-sdk/node-http-handler': 3.282.0
-      '@aws-sdk/protocol-http': 3.282.0
-      '@aws-sdk/smithy-client': 3.279.0
-      '@aws-sdk/types': 3.272.0
-      '@aws-sdk/url-parser': 3.272.0
+      '@aws-sdk/client-sts': 3.290.0
+      '@aws-sdk/config-resolver': 3.290.0
+      '@aws-sdk/credential-provider-node': 3.290.0
+      '@aws-sdk/fetch-http-handler': 3.290.0
+      '@aws-sdk/hash-node': 3.290.0
+      '@aws-sdk/invalid-dependency': 3.290.0
+      '@aws-sdk/middleware-content-length': 3.290.0
+      '@aws-sdk/middleware-endpoint': 3.290.0
+      '@aws-sdk/middleware-host-header': 3.290.0
+      '@aws-sdk/middleware-logger': 3.290.0
+      '@aws-sdk/middleware-recursion-detection': 3.290.0
+      '@aws-sdk/middleware-retry': 3.290.0
+      '@aws-sdk/middleware-serde': 3.290.0
+      '@aws-sdk/middleware-signing': 3.290.0
+      '@aws-sdk/middleware-stack': 3.290.0
+      '@aws-sdk/middleware-user-agent': 3.290.0
+      '@aws-sdk/node-config-provider': 3.290.0
+      '@aws-sdk/node-http-handler': 3.290.0
+      '@aws-sdk/protocol-http': 3.290.0
+      '@aws-sdk/smithy-client': 3.290.0
+      '@aws-sdk/types': 3.290.0
+      '@aws-sdk/url-parser': 3.290.0
       '@aws-sdk/util-base64': 3.208.0
       '@aws-sdk/util-body-length-browser': 3.188.0
       '@aws-sdk/util-body-length-node': 3.208.0
-      '@aws-sdk/util-defaults-mode-browser': 3.279.0
-      '@aws-sdk/util-defaults-mode-node': 3.287.0
-      '@aws-sdk/util-endpoints': 3.272.0
-      '@aws-sdk/util-retry': 3.272.0
-      '@aws-sdk/util-user-agent-browser': 3.282.0
-      '@aws-sdk/util-user-agent-node': 3.287.0
+      '@aws-sdk/util-defaults-mode-browser': 3.290.0
+      '@aws-sdk/util-defaults-mode-node': 3.290.0
+      '@aws-sdk/util-endpoints': 3.290.0
+      '@aws-sdk/util-retry': 3.290.0
+      '@aws-sdk/util-user-agent-browser': 3.290.0
+      '@aws-sdk/util-user-agent-node': 3.290.0
       '@aws-sdk/util-utf8': 3.254.0
       tslib: 2.5.0
     transitivePeerDependencies:
@@ -3455,6 +3459,33 @@ packages:
   /@sindresorhus/is/0.7.0:
     resolution: {integrity: sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==}
     engines: {node: '>=4'}
+    dev: false
+
+  /@solid-primitives/event-bus/1.0.2_solid-js@1.6.14:
+    resolution: {integrity: sha512-CdMHqN/CIQ6ORZk1SvDlYqbbjR7exXKvBHFEu/Tj4nzo964yPoN3YXQejT9U2pT9QeOhdfqbfaDrPscPmbEenA==}
+    peerDependencies:
+      solid-js: ^1.6.0
+    dependencies:
+      '@solid-primitives/immutable': 0.1.8_solid-js@1.6.14
+      '@solid-primitives/utils': 5.5.0_solid-js@1.6.14
+      solid-js: 1.6.14
+    dev: false
+
+  /@solid-primitives/immutable/0.1.8_solid-js@1.6.14:
+    resolution: {integrity: sha512-qT+FfgweyVa5bjeEhOOd5mJrmOgzUbIbB7SCIT+MMR87K72s7+SuqLpWtQwNE4hac4rMg25mElwVHaM1HRtqHQ==}
+    peerDependencies:
+      solid-js: ^1.6.0
+    dependencies:
+      '@solid-primitives/utils': 5.5.0_solid-js@1.6.14
+      solid-js: 1.6.14
+    dev: false
+
+  /@solid-primitives/utils/5.5.0_solid-js@1.6.14:
+    resolution: {integrity: sha512-+0VGdqRA4g/u6PACJKER7E9v7njd3c+JA4RuXGvvZO/v8wPegOLHkxpohOQHRBSWY+Q+dmyVfXn0mks2m6gfJg==}
+    peerDependencies:
+      solid-js: ^1.6.0
+    dependencies:
+      solid-js: 1.6.14
     dev: false
 
   /@solidjs/router/0.8.0_solid-js@1.6.14:
@@ -9091,7 +9122,7 @@ packages:
       '@aws-sdk/client-cloudfront': 3.287.0
       '@aws-sdk/client-iam': 3.287.0
       '@aws-sdk/client-iot': 3.290.0
-      '@aws-sdk/client-iot-data-plane': 3.287.0
+      '@aws-sdk/client-iot-data-plane': 3.290.0
       '@aws-sdk/client-lambda': 3.287.0
       '@aws-sdk/client-rds-data': 3.287.0
       '@aws-sdk/client-s3': 3.287.0_ofobfh7swerylyc2x3ef2to2fi

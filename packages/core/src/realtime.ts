@@ -3,14 +3,29 @@ import { z } from "zod"
 import { assertHost } from "./actor"
 import { zod } from "./zod"
 import { IoTClient, DescribeEndpointCommand } from "@aws-sdk/client-iot"
+import {
+  IoTDataPlaneClient,
+  PublishCommand,
+} from "@aws-sdk/client-iot-data-plane"
 
-const client = new IoTClient({})
+const iot = new IoTClient({})
+const data = new IoTDataPlaneClient({})
+
 export const endpoint = zod(z.void(), async () => {
   assertHost()
-  const result = await client.send(
+  const result = await iot.send(
     new DescribeEndpointCommand({
       endpointType: "iot:Data-ATS",
     })
   )
   return result.endpointAddress!
 })
+
+export async function publish(topic: string, payload: any) {
+  await data.send(
+    new PublishCommand({
+      payload: Buffer.from(JSON.stringify(payload)),
+      topic: `rebase/${topic}`,
+    })
+  )
+}

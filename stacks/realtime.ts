@@ -1,10 +1,15 @@
 import { ServicePrincipal } from "aws-cdk-lib/aws-iam"
 import { CfnAuthorizer } from "aws-cdk-lib/aws-iot"
-import { StackContext, Function } from "sst/constructs"
+import { StackContext, Function, use } from "sst/constructs"
+import { Auth } from "./auth"
+import { Dynamo } from "./dynamo"
 
 export function Realtime(ctx: StackContext) {
+  const dynamo = use(Dynamo)
+  const auth = use(Auth)
   const authorizerFn = new Function(ctx.stack, "authorizer-fn", {
     handler: "packages/functions/src/iot-auth.handler",
+    bind: [dynamo, auth],
     permissions: ["iot"],
     environment: {
       ACCOUNT: ctx.app.account,

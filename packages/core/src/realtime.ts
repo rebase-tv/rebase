@@ -7,6 +7,7 @@ import {
   IoTDataPlaneClient,
   PublishCommand,
 } from "@aws-sdk/client-iot-data-plane"
+import { Config } from "sst/node/config"
 
 const iot = new IoTClient({})
 const data = new IoTDataPlaneClient({})
@@ -25,7 +26,7 @@ export async function publish(topic: string, payload: any) {
   await data.send(
     new PublishCommand({
       payload: Buffer.from(JSON.stringify(payload)),
-      topic: `rebase/${topic}`,
+      topic: `rebase/${Config.STAGE}/${topic}`,
     })
   )
 }

@@ -25,6 +25,7 @@ export function Site({ stack }: StackContext) {
     environment: {
       VITE_AUTH_URL: auth.url,
       VITE_API_URL: api.url,
+      VITE_STAGE: stack.stage,
     },
   })
 }

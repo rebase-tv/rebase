@@ -9,7 +9,11 @@ export function Realtime() {
   let connection: mqtt.MqttClientConnection
 
   publisher.listen((evt) => {
-    connection.publish(`/rebase/${evt.type}`, JSON.stringify(evt), 0)
+    connection.publish(
+      `rebase/${import.meta.env.VITE_STAGE}/${evt.type}`,
+      JSON.stringify(evt),
+      0
+    )
   })
 
   createEffect(async () => {
@@ -45,7 +49,10 @@ export function Realtime() {
     })
     connection.on("disconnect", console.log)
     await connection.connect()
-    await connection.subscribe("/rebase/#", mqtt.QoS.AtLeastOnce)
+    await connection.subscribe(
+      `rebase/${import.meta.env.VITE_STAGE}/#`,
+      mqtt.QoS.AtLeastOnce
+    )
     Bus.publish("host.connected", {})
   })
 

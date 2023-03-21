@@ -17,6 +17,7 @@ import Animated, {
 } from "react-native-reanimated"
 import MaskedView from "@react-native-masked-view/masked-view"
 import { trpc, TRPCProvider } from "./data/trpc"
+import { EventPayloads } from "@rebase/core/bus"
 
 const StyledIonicons = styled(Ionicons)
 const StyledTouchableHighlight = styled(TouchableHighlight)
@@ -42,6 +43,7 @@ function Screen() {
 
   useEffect(() => {
     if (!cue) return
+    const payload: EventPayloads = JSON.parse(cue.text)
 
     transition.value = 1
     const handle = setTimeout(() => {

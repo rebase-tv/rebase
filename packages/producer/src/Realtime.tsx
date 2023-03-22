@@ -4,7 +4,12 @@ import { createEffect, onCleanup } from "solid-js"
 import { Bus, bus, publisher } from "./data/bus"
 
 export function Realtime() {
-  const stream = trpc.realtime_endpoint.useQuery()
+  const stream = trpc.realtime_endpoint.useQuery(
+    () => {},
+    () => ({
+      retry: false,
+    })
+  )
 
   let connection: mqtt.MqttClientConnection
 
@@ -54,6 +59,16 @@ export function Realtime() {
       mqtt.QoS.AtLeastOnce
     )
     Bus.publish("host.connected", {})
+  })
+
+  createEffect(() => {
+    if (stream.isError) {
+      alert(
+        "Failed to get endpoint. Auth token maybe invalid for some reason. Removing it."
+      )
+      localStorage.removeItem("token")
+      location.reload()
+    }
   })
 
   onCleanup(() => {

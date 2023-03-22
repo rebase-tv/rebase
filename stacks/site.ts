@@ -20,7 +20,7 @@ export function Site({ stack }: StackContext) {
     },
   })
 
-  const site = new StaticSite(stack, "producer", {
+  const producer = new StaticSite(stack, "producer", {
     path: "packages/producer",
     environment: {
       VITE_AUTH_URL: auth.url,

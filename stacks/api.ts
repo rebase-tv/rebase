@@ -1,13 +1,15 @@
-import { StackContext, Api as SSTApi, use } from "sst/constructs"
+import { StackContext, Api as SSTApi, use, Config } from "sst/constructs"
 import { DNS } from "./dns"
 import { Stream } from "./stream"
 import fs from "fs/promises"
 import { Auth } from "./auth"
 import { Dynamo } from "./dynamo"
+import { Secrets } from "./secrets"
 
 export function Api({ stack }: StackContext) {
   const dns = use(DNS)
   const stream = use(Stream)
+  const secrets = use(Secrets)
 
   const api = new SSTApi(stack, "api", {
     defaults: {
@@ -33,6 +35,7 @@ export function Api({ stack }: StackContext) {
             stream.STREAM_PRIVATE_KEY,
             stream.STREAM_CHANNEL_ARN,
             stream.STREAM_CHANNEL_URL,
+            secrets.AIRTABLE_TOKEN,
           ],
         },
       },

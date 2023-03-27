@@ -1,15 +1,9 @@
+export * as Bus from "./bus"
+
 import { Realtime } from "./realtime"
 
 export interface Events {
   "host.connected": {}
-  "game.question": {
-    id: string
-    text: string
-    choices: {
-      id: string
-      text: string
-    }[]
-  }
 }
 
 export type EventPayloads = {

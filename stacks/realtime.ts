@@ -3,12 +3,14 @@ import { CfnAuthorizer, CfnTopicRule } from "aws-cdk-lib/aws-iot"
 import { StackContext, Function, use } from "sst/constructs"
 import { Auth } from "./auth"
 import { Dynamo } from "./dynamo"
+import { Secrets } from "./secrets"
 import { Stream } from "./stream"
 
 export function Realtime(ctx: StackContext) {
   const dynamo = use(Dynamo)
   const auth = use(Auth)
   const stream = use(Stream)
+  const secrets = use(Secrets)
 
   const authorizerFn = new Function(ctx.stack, "authorizer-fn", {
     handler: "packages/functions/src/iot/auth.handler",
@@ -35,7 +37,7 @@ export function Realtime(ctx: StackContext) {
   const topicHandler = new Function(ctx.stack, "iot-event-fn", {
     handler: "packages/functions/src/iot/event.handler",
     permissions: ["ivs"],
-    bind: [stream.STREAM_CHANNEL_ARN],
+    bind: [stream.STREAM_CHANNEL_ARN, dynamo, secrets.AIRTABLE_TOKEN],
   })
 
   new CfnTopicRule(ctx.stack, "rule", {

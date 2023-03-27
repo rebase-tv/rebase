@@ -6,12 +6,14 @@ import { Stream } from "@rebase/core/stream"
 import { useSession } from "sst/node/future/auth"
 import { provideActor } from "@rebase/core/actor"
 import { Realtime } from "@rebase/core/realtime"
+import { Question } from "@rebase/core/question"
 
 export const t = initTRPC.create()
 
 const router = t.router({
   stream_create: expose(Stream.create),
   realtime_endpoint: expose(Realtime.endpoint),
+  question_list: expose(Question.list),
 })
 
 export type Router = typeof router

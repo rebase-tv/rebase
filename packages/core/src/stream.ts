@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 
 export * as Stream from "./stream"
 
-export const create = zod(z.object({}), () => {
+export const create = zod(z.void(), () => {
   const decodedPrivateKey = Buffer.from(
     Config.STREAM_PRIVATE_KEY,
     "base64"

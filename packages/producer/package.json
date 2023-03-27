@@ -21,6 +21,7 @@
     "@tanstack/solid-query": "5.0.0-alpha.5",
     "@trpc/client": "^10.16.0",
     "@trpc/server": "^10.14.1",
+    "amazon-ivs-player": "^1.17.0",
     "aws-iot-device-sdk-v2": "^1.9.5",
     "solid-js": "^1.6.10",
     "solid-trpc": "0.0.11-rc.3",

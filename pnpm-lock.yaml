@@ -132,6 +132,7 @@ importers:
       '@tanstack/solid-query': 5.0.0-alpha.5
       '@trpc/client': ^10.16.0
       '@trpc/server': ^10.14.1
+      amazon-ivs-player: ^1.17.0
       aws-iot-device-sdk-v2: ^1.9.5
       solid-js: ^1.6.10
       solid-trpc: 0.0.11-rc.3
@@ -146,6 +147,7 @@ importers:
       '@tanstack/solid-query': 5.0.0-alpha.5_solid-js@1.6.14
       '@trpc/client': 10.16.0_@trpc+server@10.14.1
       '@trpc/server': 10.14.1
+      amazon-ivs-player: 1.17.0
       aws-iot-device-sdk-v2: 1.9.5
       solid-js: 1.6.14
       solid-trpc: 0.0.11-rc.3_3jk4xvp6hipeafqw2txtbj46q4
@@ -3266,6 +3268,13 @@ packages:
       - supports-color
     dev: true
 
+  /@babel/runtime/7.21.0:
+    resolution: {integrity: sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.11
+    dev: false
+
   /@babel/template/7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==}
     engines: {node: '>=6.9.0'}
@@ -4466,6 +4475,15 @@ packages:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
       uri-js: 4.4.1
+
+  /amazon-ivs-player/1.17.0:
+    resolution: {integrity: sha512-wh0K8OxfVStJkU8XmC+KUG73vrUZvJpqEouDWsURiHRNjYQxMBjiZEgFOzvffOdetrb2cYZ3IsB8i+vSx3hA4Q==}
+    dependencies:
+      '@babel/runtime': 7.21.0
+      bowser: 2.11.0
+      promise-polyfill: 8.3.0
+      typescript: 4.9.5
+    dev: false
 
   /ansi-align/3.0.1:
     resolution: {integrity: sha512-IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w==}
@@ -9030,6 +9048,10 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: false
 
+  /promise-polyfill/8.3.0:
+    resolution: {integrity: sha512-H5oELycFml5yto/atYqmjyigJoAo3+OXwolYiH7OfQuYlAqhxNvTfiNMbV9hsC6Yp83yE5r2KTVmtrG6R9i6Pg==}
+    dev: false
+
   /promptly/3.2.0:
     resolution: {integrity: sha512-WnR9obtgW+rG4oUV3hSnNGl1pHm3V1H/qD9iJBumGSmVsSC5HpZOLuu8qdMb6yCItGfT7dcRszejr/5P3i9Pug==}
     dependencies:
@@ -9290,6 +9312,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+
+  /regenerator-runtime/0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: false
 
   /rehype-parse/8.0.4:
     resolution: {integrity: sha512-MJJKONunHjoTh4kc3dsM1v3C9kGrrxvA3U8PxZlP2SjH8RNUSrb+lF7Y0KVaUDnGH2QZ5vAn7ulkiajM9ifuqg==}

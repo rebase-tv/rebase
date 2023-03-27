@@ -72,7 +72,7 @@ export function Realtime() {
   })
 
   onCleanup(() => {
-    connection.disconnect()
+    if (connection) connection.disconnect()
   })
   return null
 }

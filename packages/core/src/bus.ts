@@ -2,9 +2,7 @@ export * as Bus from "./bus"
 
 import { Realtime } from "./realtime"
 
-export interface Events {
-  "host.connected": {}
-}
+export interface Events {}
 
 export type EventPayloads = {
   [T in keyof Events]: {

@@ -44,6 +44,8 @@ export function assertActor<T extends Actor["type"]>(type: T) {
 
 const HOSTS = ["mail@thdxr.com", "elmore.adam@gmail.com"]
 export async function assertHost() {
+  const actor = useActor()
+  if (actor.type === "system") return
   const user = assertActor("user")
   const info = await User.fromID(user.properties.userID)
   if (info && HOSTS.includes(info.email)) return

@@ -7,18 +7,10 @@ import { Config } from "sst/node/config"
 import { assertHost } from "./actor"
 import { Bus } from "./bus"
 
-declare module "./bus" {
-  export interface Events {
-    "game.question": Info
-    "game.question.used": {
-      id: string
-    }
-  }
-}
-
 Airtable.configure({
   apiKey: Config.AIRTABLE_TOKEN,
 })
+
 const Table = Airtable.base("appqDOnASoKwHWOoO").table<{
   text: string
   used: string
@@ -28,7 +20,7 @@ const Table = Airtable.base("appqDOnASoKwHWOoO").table<{
 }>("Denormalized")
 
 const Info = z.object({
-  id: z.string(),
+  questionID: z.string(),
   text: z.string(),
   answers: z.string().array(),
 })
@@ -40,17 +32,7 @@ export const list = zod(z.void(), async () => {
     filterByFormula: `{Used} = BLANK()`,
   }).all()
 
-  return results.map(
-    (result): Info => ({
-      id: result.id,
-      text: result.fields.text,
-      answers: [
-        result.fields.answer_correct,
-        result.fields.answer_wrong_1,
-        result.fields.answer_wrong_2,
-      ].sort(() => Math.random() - 0.5),
-    })
-  )
+  return results.map(deserialize)
 })
 
 export const setUsed = zod(z.string(), async (id) => {
@@ -59,3 +41,20 @@ export const setUsed = zod(z.string(), async (id) => {
   })
   await Bus.publish("game.question.used", { id })
 })
+
+export const fromID = zod(z.string(), async (id) => {
+  const result = await Table.find(id)
+  return deserialize(result)
+})
+
+function deserialize(result: any): Info {
+  return {
+    questionID: result.id,
+    text: result.fields.text,
+    answers: [
+      result.fields.answer_correct,
+      result.fields.answer_wrong_1,
+      result.fields.answer_wrong_2,
+    ],
+  }
+}

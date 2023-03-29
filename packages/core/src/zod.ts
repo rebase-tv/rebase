@@ -1,4 +1,5 @@
 import { z } from "zod"
+import { DateTime } from "luxon"
 
 export function zod<
   Schema extends z.ZodSchema<any, any, any>,
@@ -11,3 +12,14 @@ export function zod<
   result.schema = schema || z.any()
   return result
 }
+
+export const iso8601 = () =>
+  z
+    .string()
+    .refine(DateTime.fromISO, { message: "Not a valid ISO string date" })
+
+export const timestamps = z.object({
+  created: iso8601(),
+  updated: iso8601(),
+  deleted: iso8601().optional(),
+})

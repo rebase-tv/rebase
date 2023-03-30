@@ -39,6 +39,17 @@ export function Api({ stack }: StackContext) {
           ],
         },
       },
+      "POST /{proxy+}": {
+        function: {
+          handler: "packages/functions/src/trpc.handler",
+          bind: [
+            stream.STREAM_PRIVATE_KEY,
+            stream.STREAM_CHANNEL_ARN,
+            stream.STREAM_CHANNEL_URL,
+            secrets.AIRTABLE_TOKEN,
+          ],
+        },
+      },
       "GET /media/card.png": {
         function: {
           handler: "packages/functions/src/media/card.handler",

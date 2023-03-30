@@ -9,7 +9,7 @@ export function zod<
     const parsed = skipParse ? input : result.schema.parse(input)
     return func(parsed)
   }
-  result.schema = schema || z.any()
+  result.schema = schema
   return result
 }
 

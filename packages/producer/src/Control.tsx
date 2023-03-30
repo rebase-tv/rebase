@@ -11,10 +11,16 @@ import wasmWorkerPath from "amazon-ivs-player/dist/assets/amazon-ivs-wasmworker.
 export function Control() {
   const questions = trpc.question_list.useQuery()
   const stream = trpc.stream_create.useQuery()
+  const mutation = {
+    createGame: trpc.game_question_create.useMutation(),
+    assignQuestion: trpc.game_question_assign.useMutation(),
+  }
+
+  mutation.createGame.mutateAsync()
 
   const playerElement = <video class="w-full h-auto" playsinline controls />
 
-  Bus.on("game.question.used", () => questions.refetch())
+  Bus.on("game.question.assigned", () => questions.refetch())
 
   const player = IVS.create({
     wasmWorker: wasmWorkerPath,
@@ -50,12 +56,15 @@ export function Control() {
             <For each={questions.data || []}>
               {(question) => (
                 <tr>
-                  <td>{question.id}</td>
+                  <td>{question.questionID}</td>
                   <td>{question.text}</td>
                   <td>
                     <button
                       onClick={() => {
-                        Bus.publish("game.question", question)
+                        mutation.assignQuestion.mutate({
+                          gameID: mutation.createGame.data?.gameID!,
+                          questionID: question.questionID,
+                        })
                       }}
                       class="text-xs bg-green-50 py-1 px-4 border-[1px] border-green-900"
                     >

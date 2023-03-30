@@ -1,8 +1,21 @@
 export * as Bus from "./bus"
 
+import type { Question } from "./question"
 import { Realtime } from "./realtime"
 
-export interface Events {}
+export interface Events {
+  "game.question.assigned": {
+    gameID: string
+    question: Question.Info
+  }
+  "game.question.closed": {
+    gameID: string
+    questionID: string
+  }
+  "game.question.used": {
+    id: string
+  }
+}
 
 export type EventPayloads = {
   [T in keyof Events]: {

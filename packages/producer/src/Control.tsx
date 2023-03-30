@@ -20,8 +20,6 @@ export function Control() {
 
   const playerElement = <video class="w-full h-auto" playsinline controls />
 
-  Bus.on("game.question.assigned", () => questions.refetch())
-
   const player = IVS.create({
     wasmWorker: wasmWorkerPath,
     wasmBinary: wasmBinaryPath,
@@ -60,11 +58,12 @@ export function Control() {
                   <td>{question.text}</td>
                   <td>
                     <button
-                      onClick={() => {
-                        mutation.assignQuestion.mutate({
+                      onClick={async () => {
+                        await mutation.assignQuestion.mutateAsync({
                           gameID: mutation.createGame.data?.gameID!,
                           questionID: question.questionID,
                         })
+                        questions.refetch()
                       }}
                       class="text-xs bg-green-50 py-1 px-4 border-[1px] border-green-900"
                     >

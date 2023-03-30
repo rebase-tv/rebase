@@ -39,7 +39,6 @@ export const setUsed = zod(z.string(), async (id) => {
   await Table.update(id, {
     used: new Date().toISOString(),
   })
-  await Bus.publish("game.question.used", { id })
 })
 
 export const fromID = zod(z.string(), async (id) => {

@@ -9,22 +9,6 @@ import { Question } from "./question"
 import { assertActor } from "./actor"
 import { Bus } from "./bus"
 
-declare module "./bus" {
-  export interface Events {
-    "game.question.assigned": {
-      gameID: string
-      question: Question.Info
-    }
-    "game.question.closed": {
-      gameID: string
-      questionID: string
-    }
-    "game.question.used": {
-      id: string
-    }
-  }
-}
-
 const GameEntity = new Entity(
   {
     model: {

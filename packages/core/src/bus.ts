@@ -12,9 +12,6 @@ export interface Events {
     gameID: string
     questionID: string
   }
-  "game.question.used": {
-    id: string
-  }
 }
 
 export type EventPayloads = {

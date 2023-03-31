@@ -253,6 +253,7 @@ export const publishResults = zod(
     Bus.publish("game.question.results", {
       questionID: input.questionID,
       gameID: input.gameID,
+      correct: question.correct,
       results: question.results,
     })
   }

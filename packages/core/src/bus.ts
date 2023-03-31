@@ -15,6 +15,7 @@ export interface Events {
   "game.question.results": {
     gameID: string
     questionID: string
+    correct: string
     results: Record<string, number>
   }
 }

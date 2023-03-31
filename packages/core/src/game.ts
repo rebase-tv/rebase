@@ -27,6 +27,7 @@ const GameEntity = new Entity(
           [key: string]: {
             questionID: string
             correct: string
+            results: Record<string, number>
             time: {
               assigned: string
               closed: string
@@ -182,6 +183,7 @@ export const closeQuestion = zod(
     questionID: z.string(),
   }),
   async (input) => {
+    const r = await results(input)
     await GameEntity.update({
       gameID: input.gameID,
     })
@@ -190,8 +192,13 @@ export const closeQuestion = zod(
           attr.questions[input.questionID].time.closed,
           new Date().toISOString()
         )
+        op.set(attr.questions[input.questionID].results, r)
       })
       .go()
+    await Bus.publish("game.question.closed", {
+      ...input,
+      results: r,
+    })
   }
 )
 
@@ -216,8 +223,13 @@ export const answerQuestion = zod(
       })
       .go()
 
+    if (
+      answers.data.length !==
+      Object.values(game.questions).filter((q) => q.time.closed).length
+    )
+      throw new Error("This user has missed a previous question")
     if (answers.data.some((a) => !a.correct))
-      throw new Error("This user is eliminated from this game")
+      throw new Error("This user has gotten a previous question wrong")
 
     await GameAnswerEntity.create({
       gameID: input.gameID,

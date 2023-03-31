@@ -36,6 +36,7 @@ export const list = zod(z.void(), async () => {
 })
 
 export const setUsed = zod(z.string(), async (id) => {
+  return
   await Table.update(id, {
     used: new Date().toISOString(),
   })

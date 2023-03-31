@@ -11,33 +11,34 @@ import { Game } from "@rebase/core/game"
 
 export const t = initTRPC.create()
 
-const router = t.router({
+export const router = t.router({
   stream_create: query(Stream.create),
   realtime_endpoint: query(Realtime.endpoint),
   question_list: query(Question.list),
-  game_question_create: t.procedure
-    .input(Game.create.schema)
-    .mutation(async (req) => Game.create(req.input)),
-  game_question_assign: t.procedure
-    .input(Game.assignQuestion.schema)
-    .mutation((req) => Game.assignQuestion(req.input)),
+  game_question_create: mutation(Game.create),
+  game_question_close: mutation(Game.closeQuestion),
+  game_question_assign: mutation(Game.assignQuestion),
+  game_answer: mutation(Game.answerQuestion),
+  game_from_id: query(Game.fromID),
 })
 
 export type Router = typeof router
 
 export function query<
-  T extends ((input: any) => any) & { schema: z.ZodSchema<any, any, any> }
->(fn: T) {
-  return t.procedure.input(fn.schema).query((req) => {
-    return fn(req.input) as Awaited<ReturnType<T>>
+  S extends z.ZodSchema<any, any, any>,
+  Fn extends (input: any) => any
+>(fn: Fn & { schema: S }) {
+  return t.procedure.input<S>(fn.schema).query((req) => {
+    return fn(req.input) as Awaited<ReturnType<Fn>>
   })
 }
 
 export function mutation<
-  T extends ((input: any) => any) & { schema: z.ZodSchema<any, any, any> }
->(fn: T) {
+  S extends z.ZodSchema<any, any, any>,
+  Fn extends (input: any) => any
+>(fn: Fn & { schema: S }) {
   return t.procedure.input(fn.schema).mutation((req) => {
-    return fn(req.input) as Awaited<ReturnType<T>>
+    return fn(req.input) as Awaited<ReturnType<typeof fn>>
   })
 }
 

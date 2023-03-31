@@ -7,8 +7,8 @@ provideActor({
   type: "system",
   properties: {},
 })
-const [question] = await Question.list()
-const SAMPLE_QUESTION = question
+const questions = await Question.list()
+const SAMPLE_QUESTION = questions[0]
 console.log("Sample question", SAMPLE_QUESTION)
 
 it("create game", async () => {
@@ -125,4 +125,38 @@ it("cannot answer closed question", async () => {
       answer: SAMPLE_QUESTION.answers[0],
     })
   }).rejects.toThrow(/Question already closed/)
+})
+
+it.only("cannot answer once eliminated", async () => {
+  const game = await Game.create()
+  await Game.assignQuestion({
+    gameID: game.gameID,
+    questionID: SAMPLE_QUESTION.questionID,
+  })
+  provideActor({
+    type: "user",
+    properties: {
+      userID: "user",
+    },
+  })
+  await Game.answerQuestion({
+    gameID: game.gameID,
+    questionID: SAMPLE_QUESTION.questionID,
+    answer: SAMPLE_QUESTION.answers[1],
+  })
+  await Game.closeQuestion({
+    gameID: game.gameID,
+    questionID: SAMPLE_QUESTION.questionID,
+  })
+  await Game.assignQuestion({
+    gameID: game.gameID,
+    questionID: questions[1].questionID,
+  })
+  await expect(async () => {
+    await Game.answerQuestion({
+      gameID: game.gameID,
+      questionID: questions[1].questionID,
+      answer: questions[1].answers[0],
+    })
+  }).rejects.toThrow(/wrong/)
 })

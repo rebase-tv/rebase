@@ -11,6 +11,7 @@ export interface Events {
   "game.question.closed": {
     gameID: string
     questionID: string
+    results: Record<string, number>
   }
 }
 

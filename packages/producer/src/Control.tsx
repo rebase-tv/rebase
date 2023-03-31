@@ -1,4 +1,4 @@
-import { createEffect, createMemo, For, onCleanup } from "solid-js"
+import { createEffect, createMemo, For, onCleanup, Show } from "solid-js"
 import { Bus } from "./data/bus"
 import { trpc } from "./data/trpc"
 import * as IVS from "amazon-ivs-player"
@@ -16,6 +16,7 @@ export function Control() {
     createGame: trpc.game_question_create.useMutation(),
     assignQuestion: trpc.game_question_assign.useMutation(),
     closeQuestion: trpc.game_question_close.useMutation(),
+    publishResults: trpc.game_question_results.useMutation(),
   }
 
   const game = trpc.game_from_id.useQuery(
@@ -58,7 +59,22 @@ export function Control() {
   return (
     <div class="fixed inset-0 flex bg-black text-white">
       <div class="flex-1">
-        <pre>{JSON.stringify(currentQuestion(), null, 2)}</pre>
+        <div class="flex">
+          <pre>{JSON.stringify(currentQuestion(), null, 2)}</pre>
+          <Show when={currentQuestion()?.time.closed}>
+            <button
+              class="text-xs text-black bg-green-50 py-1 px-4 border-[1px] border-green-900"
+              onClick={() =>
+                mutation.publishResults.mutateAsync({
+                  gameID: mutation.createGame.data?.gameID!,
+                  questionID: currentQuestion()?.questionID!,
+                })
+              }
+            >
+              Publish Results
+            </button>
+          </Show>
+        </div>
         <table>
           <thead>
             <tr>

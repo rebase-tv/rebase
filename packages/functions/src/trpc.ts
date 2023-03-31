@@ -17,6 +17,7 @@ export const router = t.router({
   question_list: query(Question.list),
   game_question_create: mutation(Game.create),
   game_question_close: mutation(Game.closeQuestion),
+  game_question_results: mutation(Game.publishResults),
   game_question_assign: mutation(Game.assignQuestion),
   game_answer: mutation(Game.answerQuestion),
   game_from_id: query(Game.fromID),

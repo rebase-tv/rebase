@@ -241,6 +241,23 @@ export const answerQuestion = zod(
   }
 )
 
+export const publishResults = zod(
+  z.object({
+    gameID: z.string(),
+    questionID: z.string(),
+  }),
+  async (input) => {
+    const game = await fromID(input.gameID)
+    const question = game?.questions[input.questionID]
+    if (!question) throw new Error("Question not found")
+    Bus.publish("game.question.results", {
+      questionID: input.questionID,
+      gameID: input.gameID,
+      results: question.results,
+    })
+  }
+)
+
 export const results = zod(
   z.object({
     gameID: z.string(),

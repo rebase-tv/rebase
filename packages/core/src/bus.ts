@@ -11,6 +11,10 @@ export interface Events {
   "game.question.closed": {
     gameID: string
     questionID: string
+  }
+  "game.question.results": {
+    gameID: string
+    questionID: string
     results: Record<string, number>
   }
 }

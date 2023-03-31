@@ -16,4 +16,7 @@ export async function handler(evt: EventPayloads) {
   if (evt.type === "game.question.closed") {
     Stream.publish(evt)
   }
+  if (evt.type === "game.question.results") {
+    Stream.publish(evt)
+  }
 }

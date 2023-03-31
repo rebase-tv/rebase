@@ -195,10 +195,7 @@ export const closeQuestion = zod(
         op.set(attr.questions[input.questionID].results, r)
       })
       .go()
-    await Bus.publish("game.question.closed", {
-      ...input,
-      results: r,
-    })
+    await Bus.publish("game.question.closed", input)
   }
 )
 

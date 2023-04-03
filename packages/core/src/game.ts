@@ -116,7 +116,7 @@ const GameAnswerEntity = new Entity(
         },
         sk: {
           field: "sk",
-          composite: ["answer"],
+          composite: ["questionID"],
         },
       },
       byGame: {

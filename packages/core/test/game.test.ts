@@ -1,3 +1,4 @@
+import { ulid } from "ulid"
 import { expect, it } from "vitest"
 import { provideActor } from "../src/actor"
 import { Game } from "../src/game"
@@ -9,7 +10,6 @@ provideActor({
 })
 const questions = await Question.list()
 const SAMPLE_QUESTION = questions[0]
-console.log("Sample question", SAMPLE_QUESTION)
 
 it("create game", async () => {
   const game = await Game.create()
@@ -52,19 +52,19 @@ it("answer correctly", async () => {
   const game = await Game.create()
   await Game.assignQuestion({
     gameID: game.gameID,
-    questionID: question.questionID,
+    questionID: SAMPLE_QUESTION.questionID,
   })
 
   provideActor({
     type: "user",
     properties: {
-      userID: "user",
+      userID: ulid(),
     },
   })
   await Game.answerQuestion({
     gameID: game.gameID,
-    questionID: question.questionID,
-    answer: question.answers[0],
+    questionID: SAMPLE_QUESTION.questionID,
+    answer: SAMPLE_QUESTION.answers[0],
   })
 
   const results = await Game.results({
@@ -74,7 +74,7 @@ it("answer correctly", async () => {
   expect(results[SAMPLE_QUESTION.answers[0]]).toEqual(1)
 })
 
-it("cannot answer twice", async () => {
+it("can answer twice", async () => {
   const game = await Game.create()
   await Game.assignQuestion({
     gameID: game.gameID,
@@ -84,7 +84,7 @@ it("cannot answer twice", async () => {
   provideActor({
     type: "user",
     properties: {
-      userID: "user",
+      userID: ulid(),
     },
   })
   await Game.answerQuestion({
@@ -92,13 +92,11 @@ it("cannot answer twice", async () => {
     questionID: SAMPLE_QUESTION.questionID,
     answer: SAMPLE_QUESTION.answers[0],
   })
-  await expect(async () => {
-    await Game.answerQuestion({
-      gameID: game.gameID,
-      questionID: SAMPLE_QUESTION.questionID,
-      answer: SAMPLE_QUESTION.answers[0],
-    })
-  }).rejects.toThrow()
+  await Game.answerQuestion({
+    gameID: game.gameID,
+    questionID: SAMPLE_QUESTION.questionID,
+    answer: SAMPLE_QUESTION.answers[0],
+  })
 })
 
 it("cannot answer closed question", async () => {
@@ -111,7 +109,7 @@ it("cannot answer closed question", async () => {
   provideActor({
     type: "user",
     properties: {
-      userID: "user",
+      userID: ulid(),
     },
   })
   await Game.closeQuestion({
@@ -127,7 +125,7 @@ it("cannot answer closed question", async () => {
   }).rejects.toThrow(/Question already closed/)
 })
 
-it.only("cannot answer once eliminated", async () => {
+it("cannot answer once eliminated", async () => {
   const game = await Game.create()
   await Game.assignQuestion({
     gameID: game.gameID,
@@ -136,7 +134,7 @@ it.only("cannot answer once eliminated", async () => {
   provideActor({
     type: "user",
     properties: {
-      userID: "user",
+      userID: ulid(),
     },
   })
   await Game.answerQuestion({

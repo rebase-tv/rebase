@@ -4,12 +4,9 @@ import { createEffect, onCleanup } from "solid-js"
 import { Bus, bus, publisher } from "./data/bus"
 
 export function Realtime() {
-  const stream = trpc.realtime_endpoint.useQuery(
-    () => {},
-    () => ({
-      retry: false,
-    })
-  )
+  const stream = trpc.realtime_endpoint.useQuery(undefined, () => ({
+    retry: false,
+  }))
 
   let connection: mqtt.MqttClientConnection
 
@@ -58,7 +55,6 @@ export function Realtime() {
       `rebase/${import.meta.env.VITE_STAGE}/#`,
       mqtt.QoS.AtLeastOnce
     )
-    Bus.publish("host.connected", {})
   })
 
   createEffect(() => {

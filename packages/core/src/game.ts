@@ -219,16 +219,18 @@ export const answerQuestion = zod(
         userID: user.properties.userID,
       })
       .go()
+      .then((r) => r.data)
+      .then((r) => r.filter((q) => q.questionID !== input.questionID))
 
     if (
-      answers.data.length !==
+      answers.length !==
       Object.values(game.questions).filter((q) => q.time.closed).length
     )
       throw new Error("This user has missed a previous question")
-    if (answers.data.some((a) => !a.correct))
+    if (answers.some((a) => !a.correct))
       throw new Error("This user has gotten a previous question wrong")
 
-    await GameAnswerEntity.create({
+    await GameAnswerEntity.put({
       gameID: input.gameID,
       userID: user.properties.userID,
       questionID: input.questionID,

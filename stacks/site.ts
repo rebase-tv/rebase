@@ -2,7 +2,6 @@ import { AstroSite, StackContext, StaticSite, use } from "sst/constructs"
 import { Auth } from "./auth"
 import { DNS } from "./dns"
 import { Dynamo } from "./dynamo"
-import { HttpOrigin } from "aws-cdk-lib/aws-cloudfront-origins"
 import { Api } from "./api"
 
 export function Site({ stack }: StackContext) {

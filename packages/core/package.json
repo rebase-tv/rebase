@@ -10,7 +10,7 @@
     "@types/jsonwebtoken": "^9.0.1",
     "@types/luxon": "^3.2.0",
     "@types/node": "^18.14.0",
-    "sst": "2.1.18",
+    "sst": "2.18.2",
     "vitest": "^0.28.5"
   },
   "dependencies": {
@@ -25,7 +25,7 @@
     "electrodb": "^2.4.1",
     "jsonwebtoken": "^9.0.0",
     "luxon": "^3.3.0",
-    "sst": "2.1.18",
+    "sst": "2.18.2",
     "ulid": "^2.3.0",
     "zod": "^3.20.6"
   }

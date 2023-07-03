@@ -6,7 +6,7 @@ import { z } from "zod"
 import { Dynamo } from "./dynamo"
 import { zod } from "./zod"
 import { Question } from "./question"
-import { assertActor } from "./actor"
+import { assertActor, assertHost } from "./actor"
 import { Bus } from "./bus"
 
 const GameEntity = new Entity(
@@ -246,6 +246,7 @@ export const publishResults = zod(
     questionID: z.string(),
   }),
   async (input) => {
+    assertHost()
     const game = await fromID(input.gameID)
     const question = game?.questions[input.questionID]
     if (!question) throw new Error("Question not found")

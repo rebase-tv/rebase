@@ -18,10 +18,10 @@
     "tailwindcss": "^3.0.24",
     "ulid": "^2.3.0",
     "vanilla-tilt": "^1.8.0",
-    "sst": "2.1.18"
+    "sst": "2.18.2"
   },
   "devDependencies": {
-    "astro-sst": "^2.0.37",
+    "astro-sst": "2.18.2",
     "prettier": "^2.8.4",
     "prettier-plugin-astro": "^0.8.0"
   }

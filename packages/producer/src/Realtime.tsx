@@ -1,7 +1,7 @@
 import { trpc } from "./data/trpc"
 import { iot, mqtt } from "aws-iot-device-sdk-v2"
 import { createEffect, onCleanup } from "solid-js"
-import { Bus, bus, publisher } from "./data/bus"
+import { bus, publisher } from "./data/bus"
 
 export function Realtime() {
   const stream = trpc.realtime_endpoint.useQuery(undefined, () => ({
@@ -38,7 +38,10 @@ export function Realtime() {
     connection = client.new_connection(config)
 
     connection.on("connect", async () => {
-      console.log("WS connected")
+      await connection.subscribe(
+        `rebase/${import.meta.env.VITE_STAGE}/#`,
+        mqtt.QoS.AtLeastOnce
+      )
     })
     connection.on("interrupt", console.log)
     connection.on("error", console.log)
@@ -50,11 +53,8 @@ export function Realtime() {
       bus.emit(parsed.type, parsed.properties)
     })
     connection.on("disconnect", console.log)
-    await connection.connect()
-    await connection.subscribe(
-      `rebase/${import.meta.env.VITE_STAGE}/#`,
-      mqtt.QoS.AtLeastOnce
-    )
+    const result = await connection.connect()
+    console.log("connected", result)
   })
 
   createEffect(() => {
